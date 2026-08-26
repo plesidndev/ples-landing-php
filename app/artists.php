@@ -22,6 +22,22 @@ $common = [
 ];
 
 return [
+    'devadata' => $common + [
+        'id' => 'devadata', 'view' => 'artists/devadata', 'name' => 'DEVADATA', 'release' => 'SAPUTANAH PAPUA',
+        'title' => 'DEVADATA — SAPUTANAH PAPUA | Ples+',
+        'description' => 'Dengarkan “SAPUTANAH PAPUA” dari DEVADATA sekarang di Spotify, Apple Music, dan TikTok.',
+        'default_url' => 'https://devadata.plesconnect.app', 'theme_color' => '#120b09',
+        'og_image' => '/images/devadata/hero.png', 'og_size' => [1917, 1080],
+        'keywords' => ['DEVADATA', 'SAPUTANAH PAPUA', 'Ples+', 'musik Indonesia', 'lagu baru'],
+        'tagline' => ['SAPUTANAH PAPUA'],
+        'platforms' => $platforms([
+            'spotify' => 'https://open.spotify.com/search/DEVADATA%20SAPUTANAH%20PAPUA',
+            'apple-music' => 'https://music.apple.com/id/search?term=DEVADATA%20SAPUTANAH%20PAPUA',
+            'tiktok' => 'https://www.tiktok.com/search?q=DEVADATA%20SAPUTANAH%20PAPUA',
+        ]),
+        'same_as' => ['https://open.spotify.com/search/DEVADATA%20SAPUTANAH%20PAPUA', 'https://music.apple.com/id/search?term=DEVADATA%20SAPUTANAH%20PAPUA', 'https://www.tiktok.com/search?q=DEVADATA%20SAPUTANAH%20PAPUA'],
+        'video' => ['id' => '', 'href' => 'https://www.youtube.com/results?search_query=DEVADATA+SAPUTANAH+PAPUA', 'title' => 'DEVADATA — SAPUTANAH PAPUA', 'poster' => '/images/devadata/hero.png'],
+    ],
     'kayl' => $common + [
         'id' => 'kayl', 'view' => 'artists/kayl', 'name' => 'KAYL', 'release' => 'dar der D0R!!',
         'title' => 'KAYL — dar der D0R!! | Ples+',

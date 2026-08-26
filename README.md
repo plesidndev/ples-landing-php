@@ -16,7 +16,7 @@ The first argument is the artist and the optional second argument is the port:
 ./run.sh maf 9000
 ```
 
-The script creates the local environment file when needed, builds missing CSS, and starts the PHP server. Available artists are `default`, `callii`, `kayl`, `maf`, and `lili`.
+The script creates the local environment file when needed, builds missing CSS, and starts the PHP server. Available artists are `default`, `callii`, `devadata`, `kayl`, `maf`, and `lili`.
 
 You can also run the setup manually:
 
@@ -27,7 +27,7 @@ npm run build
 ARTIST_ID=lili php -S localhost:8080 -t public
 ```
 
-Use `callii`, `kayl`, `maf`, `lili`, or `default` for `ARTIST_ID`. Environment variables take precedence over `app/environment.php`; the file is ignored by Git.
+Use `callii`, `devadata`, `kayl`, `maf`, `lili`, or `default` for `ARTIST_ID`. Environment variables take precedence over `app/environment.php`; the file is ignored by Git.
 
 The compiled CSS is committed intentionally, so production only needs PHP. Run `npm run build` and commit `public/assets/app.css` after changing templates or Tailwind styles.
 

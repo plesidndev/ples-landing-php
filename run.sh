@@ -7,10 +7,10 @@ ARTIST_ID=${1:-default}
 PORT=${2:-8080}
 
 case "$ARTIST_ID" in
-    default|callii|kayl|maf|lili) ;;
+    default|callii|devadata|kayl|maf|lili) ;;
     *)
         echo "Unknown artist: $ARTIST_ID"
-        echo "Available artists: default, callii, kayl, maf, lili"
+        echo "Available artists: default, callii, devadata, kayl, maf, lili"
         exit 1
         ;;
 esac

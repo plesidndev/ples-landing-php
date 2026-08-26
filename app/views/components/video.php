@@ -1,9 +1,14 @@
-<section aria-label="Music video" class="w-full px-4 py-6">
-    <div class="mx-auto max-w-sm">
+<?php
+$compactDesktop ??= false;
+$figmaMobile ??= false;
+$videoAspectClass = $figmaMobile ? 'aspect-[2/1] md:aspect-video' : 'aspect-video';
+?>
+<section aria-label="Music video" class="w-full py-6 <?= $figmaMobile ? 'px-[25px] md:px-4' : 'px-4' ?> <?= $compactDesktop ? 'md:py-2' : '' ?>">
+    <div class="mx-auto max-w-sm <?= $compactDesktop ? 'md:max-w-[280px]' : '' ?>">
         <?php if ($site['video']['id'] !== ''): ?>
-        <button type="button" data-video="<?= e($site['video']['id']) ?>" data-title="<?= e($site['video']['title']) ?>" aria-label="Play video: <?= e($site['video']['title']) ?>" class="group relative block aspect-video w-full touch-manipulation cursor-pointer overflow-hidden rounded-2xl bg-black text-left shadow-[0_12px_36px_rgba(0,0,0,0.35)] ring-1 ring-white/15 transition duration-300 hover:-translate-y-0.5 hover:ring-white/30 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-red-500/70">
+        <button type="button" data-video="<?= e($site['video']['id']) ?>" data-title="<?= e($site['video']['title']) ?>" aria-label="Play video: <?= e($site['video']['title']) ?>" class="group relative block <?= $videoAspectClass ?> w-full touch-manipulation cursor-pointer overflow-hidden rounded-2xl bg-black text-left shadow-[0_12px_36px_rgba(0,0,0,0.35)] ring-1 ring-white/15 transition duration-300 hover:-translate-y-0.5 hover:ring-white/30 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-red-500/70">
         <?php else: ?>
-        <a href="<?= e($site['video']['href']) ?>" target="_blank" rel="noopener noreferrer" aria-label="Watch on YouTube: <?= e($site['video']['title']) ?>" class="group relative block aspect-video w-full touch-manipulation cursor-pointer overflow-hidden rounded-2xl bg-black text-left shadow-[0_12px_36px_rgba(0,0,0,0.35)] ring-1 ring-white/15 transition duration-300 hover:-translate-y-0.5 hover:ring-white/30 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-red-500/70">
+        <a href="<?= e($site['video']['href']) ?>" target="_blank" rel="noopener noreferrer" aria-label="Watch on YouTube: <?= e($site['video']['title']) ?>" class="group relative block <?= $videoAspectClass ?> w-full touch-manipulation cursor-pointer overflow-hidden rounded-2xl bg-black text-left shadow-[0_12px_36px_rgba(0,0,0,0.35)] ring-1 ring-white/15 transition duration-300 hover:-translate-y-0.5 hover:ring-white/30 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-red-500/70">
         <?php endif; ?>
             <img src="<?= e($site['video']['poster']) ?>" alt="" class="absolute inset-0 size-full object-cover transition-transform duration-500 group-hover:scale-[1.03]">
             <span class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/20 to-black/10"></span>
