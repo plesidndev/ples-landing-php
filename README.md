@@ -54,3 +54,4 @@ On the first deployment only, copy `app/environment.example.php` to `app/environ
 The deployed `public_html/index.php` automatically loads `ples-landing-php/app/bootstrap.php`. If you rename the repository directory, update `$deployedApp` in `public/index.php`.
 
 Do not upload `.git`, `node_modules`, source CSS, configuration, or the complete repository into `public_html`.
+# ples-landing-php
