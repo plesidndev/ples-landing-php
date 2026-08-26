@@ -1,0 +1,13 @@
+{
+  "name": "ples-landing-php",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "tailwindcss -i resources/css/app.css -o public/assets/app.css --watch",
+    "build": "tailwindcss -i resources/css/app.css -o public/assets/app.css --minify"
+  },
+  "devDependencies": {
+    "@tailwindcss/cli": "^4.1.12",
+    "tailwindcss": "^4.1.12"
+  }
+}

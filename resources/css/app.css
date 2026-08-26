@@ -1,0 +1,26 @@
+@import "tailwindcss";
+@source "../../app/**/*.php";
+@source "../../public/**/*.php";
+
+@font-face {
+  font-family: "Atkinson Mono";
+  src: url("/fonts/atkinson-hyperlegible-mono-latin.woff2") format("woff2");
+  font-weight: 200 800;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Bebas Neue";
+  src: url("/fonts/bebas-neue-latin.woff2") format("woff2");
+  font-weight: 400;
+  font-display: swap;
+}
+
+@theme {
+  --font-display: "Bebas Neue", sans-serif;
+  --font-mono: "Atkinson Mono", monospace;
+}
+
+:root { --background: #000; --foreground: #fff; }
+html { height: 100%; }
+body { min-height: 100%; background: var(--background); color: var(--foreground); font-family: var(--font-mono), Arial, sans-serif; }

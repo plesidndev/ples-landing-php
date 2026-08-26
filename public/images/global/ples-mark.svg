@@ -1,0 +1,18 @@
+<svg preserveAspectRatio="none" overflow="visible" style="display: block;" width="31.45" height="34.8" viewBox="0 0 31.45 34.8" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="Logo Home" filter="url(#filter0_d_0_112)">
+<path d="M27.45 13.1927V10.5541H16.9221V0H14.2743V13.1927H27.45Z" fill="white"/>
+<path d="M16.9221 13.9089V26.8H14.2743V16.472H4V13.9089H16.9221Z" fill="white"/>
+</g>
+<defs>
+<filter id="filter0_d_0_112" x="0" y="0" width="31.45" height="34.8" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+<feFlood flood-opacity="0" result="BackgroundImageFix"/>
+<feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+<feOffset dy="4"/>
+<feGaussianBlur stdDeviation="2"/>
+<feComposite in2="hardAlpha" operator="out"/>
+<feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0"/>
+<feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_0_112"/>
+<feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_0_112" result="shape"/>
+</filter>
+</defs>
+</svg>
