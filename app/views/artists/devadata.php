@@ -1,8 +1,8 @@
 <main class="relative min-h-screen overflow-hidden">
-    <div class="fixed inset-0 -z-10 bg-black"><img src="/images/devadata/bg-pattern.png" alt="" class="size-full object-cover"></div>
+    <div class="fixed inset-0 -z-10 bg-black"><img src="/images/devadata/devabackgr.png" alt="" class="size-full object-cover"></div>
     <?php render('components/artist-header', ['site' => $site, 'maxWidth' => 'max-w-[402px] md:max-w-none', 'leftClass' => 'h-[31px] w-[136px] object-cover object-left', 'rightClass' => 'h-[27px] w-[24px]']); ?>
 
-    <div class="mx-auto flex w-full max-w-[402px] flex-col gap-[13px] pt-[54px] md:max-w-none md:grid md:min-h-screen md:grid-cols-2 md:gap-0 md:pt-0">
+    <div class="mx-auto flex w-full max-w-[402px] flex-col gap-[13px] md:max-w-none md:grid md:min-h-screen md:grid-cols-2 md:gap-0">
         <section aria-label="Devadata band portrait" class="relative aspect-[1917/1080] w-full overflow-hidden md:hidden">
             <img src="/images/devadata/hero.png" alt="Devadata band portrait" width="4096" height="2732" class="absolute inset-0 size-full object-cover">
         </section>
@@ -22,12 +22,13 @@
                 <img src="/images/devadata/hero.png" alt="Devadata band portrait" width="4096" height="2732" class="absolute inset-0 size-full object-cover">
             </section>
 
-            <section aria-label="Streaming links" class="order-2 flex flex-col gap-3 px-[18px] md:order-none">
-                <?php foreach ($site['platforms'] as $platform) render('components/dsp-card', ['site' => $site, 'platform' => $platform, 'variant' => 'glass', 'logoHeight' => $platform['id'] === 'tiktok' ? 28 : 26]); ?>
+            <div><?php render('components/video', ['site' => $site]); ?></div>
+
+            <section aria-label="Streaming links" class="flex flex-col gap-3 px-[18px]">
+                <?php foreach ($site['platforms'] as $platform) render('components/dsp-card', compact('site', 'platform')); ?>
             </section>
 
-            <div class="order-1 md:order-none"><?php render('components/video', ['site' => $site, 'compactDesktop' => true, 'figmaMobile' => true]); ?></div>
-            <div class="order-3 md:order-none md:mt-auto"><?php render('components/footer', ['site' => $site]); ?></div>
+            <div class="md:mt-auto"><?php render('components/footer', ['site' => $site]); ?></div>
         </div>
     </div>
 </main>

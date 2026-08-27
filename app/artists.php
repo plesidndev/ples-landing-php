@@ -35,8 +35,8 @@ return [
             'apple-music' => 'https://music.apple.com/id/search?term=DEVADATA%20SAPUTANAH%20PAPUA',
             'tiktok' => 'https://www.tiktok.com/search?q=DEVADATA%20SAPUTANAH%20PAPUA',
         ]),
-        'same_as' => ['https://open.spotify.com/search/DEVADATA%20SAPUTANAH%20PAPUA', 'https://music.apple.com/id/search?term=DEVADATA%20SAPUTANAH%20PAPUA', 'https://www.tiktok.com/search?q=DEVADATA%20SAPUTANAH%20PAPUA'],
-        'video' => ['id' => '', 'href' => 'https://www.youtube.com/results?search_query=DEVADATA+SAPUTANAH+PAPUA', 'title' => 'DEVADATA — SAPUTANAH PAPUA', 'poster' => '/images/devadata/hero.png'],
+        'same_as' => ['https://open.spotify.com/search/DEVADATA%20SAPUTANAH%20PAPUA', 'https://music.apple.com/id/search?term=DEVADATA%20SAPUTANAH%20PAPUA', 'https://www.tiktok.com/search?q=DEVADATA%20SAPUTANAH%20PAPUA', 'https://www.youtube.com/watch?v=k0Zc--bj2vc'],
+        'video' => ['id' => 'k0Zc--bj2vc', 'href' => 'https://www.youtube.com/watch?v=k0Zc--bj2vc&list=RDk0Zc--bj2vc&start_radio=1', 'title' => 'DEVADATA — SAPUTANAH PAPUA', 'poster' => '/images/devadata/hero.png'],
     ],
     'kayl' => $common + [
         'id' => 'kayl', 'view' => 'artists/kayl', 'name' => 'KAYL', 'release' => 'dar der D0R!!',
