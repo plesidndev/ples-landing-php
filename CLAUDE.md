@@ -38,6 +38,8 @@ Fields that carry real consequences:
 
 - `genre` / `artist_same_as` — emitted as JSON-LD. Wrong values are incorrect structured data; leave `artist_same_as` empty rather than pointing it at track URLs (it is for artist profiles).
 - `video.upload_date` — optional. `layout.php` emits `VideoObject` without it, which is valid but not eligible for video rich results. Only fill it with a real date.
+- DSP links are opt-in per artist and every one is written as `['href' => '...', 'active' => true|false]`, so each platform's state is explicit. Setting `active` to false hides the card but keeps the URL. A bare URL string still works and counts as active, but prefer the explicit form to match the rest of the file. Card order follows `$dspBrands`, not the order links are written in.
+- `same_as` is **derived** at the bottom of the file from the active platform hrefs plus `extra_same_as` (non-DSP URLs: YouTube, Instagram, found.ee). Do not hand-write `same_as` — deactivating a platform must remove it from both the buttons and the JSON-LD, and deriving is what guarantees that.
 - `og_size` must match the actual pixel dimensions of `og_image`.
 - `lcp_image` / `lcp_image_desktop` — when both are set, `layout.php` emits two `media`-scoped preloads. Only needed when the largest above-the-fold image differs between breakpoints (currently just devadata).
 

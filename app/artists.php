@@ -2,17 +2,41 @@
 
 declare(strict_types=1);
 
+// Card order follows this list; an artist opts in per platform by supplying a link.
 $dspBrands = [
     'spotify' => ['name' => 'Spotify', 'icon' => '/images/dsp/spotify.svg', 'aspect' => 90.19 / 29.53],
     'apple-music' => ['name' => 'Apple Music', 'icon' => '/images/dsp/apple-music.png', 'aspect' => 920 / 221],
+    'youtube-music' => ['name' => 'YouTube Music', 'icon' => '/images/dsp/youtube-music.svg', 'aspect' => 122 / 32],
     'tiktok' => ['name' => 'TikTok', 'icon' => '/images/dsp/tiktok.png', 'aspect' => 658 / 161],
 ];
 
+/**
+ * Every link is written as ['href' => ..., 'active' => bool] so the on/off state of each
+ * platform is visible at a glance. Flipping 'active' to false keeps the URL on file while
+ * removing the card and dropping it from the derived sameAs at the same time.
+ *
+ * A bare URL string is still accepted and treated as active.
+ */
 $platforms = static function (array $links) use ($dspBrands): array {
-    return array_map(
-        static fn (string $id): array => ['id' => $id, 'href' => $links[$id]] + $dspBrands[$id],
-        array_keys($dspBrands),
-    );
+    $cards = [];
+
+    foreach ($dspBrands as $id => $brand) {
+        if (!isset($links[$id])) {
+            continue;
+        }
+
+        $link = $links[$id];
+        $href = is_array($link) ? (string) ($link['href'] ?? '') : (string) $link;
+        $active = is_array($link) ? (bool) ($link['active'] ?? true) : true;
+
+        if (!$active || $href === '') {
+            continue;
+        }
+
+        $cards[] = ['id' => $id, 'href' => $href] + $brand;
+    }
+
+    return $cards;
 };
 
 $common = [
@@ -21,7 +45,7 @@ $common = [
     'app_stores' => ['google_play' => 'https://play.google.com', 'apple_store' => 'https://apps.apple.com'],
 ];
 
-return [
+$artists = [
     'devadata' => $common + [
         'id' => 'devadata', 'view' => 'artists/devadata', 'name' => 'DEVADATA', 'release' => 'SAPUTANAH PAPUA',
         'title' => 'DEVADATA — SAPUTANAH PAPUA | Ples+',
@@ -33,11 +57,11 @@ return [
         'keywords' => ['DEVADATA', 'SAPUTANAH PAPUA', 'Ples+', 'musik Indonesia', 'lagu baru'],
         'tagline' => ['SAPUTANAH PAPUA'],
         'platforms' => $platforms([
-            'spotify' => 'https://open.spotify.com/track/7bimHjV1lllUlChNnAMt5v?si=c6480752999041af',
-            'apple-music' => 'https://music.apple.com/id/song/sa-pu-tanah-papua/6805356242',
-            'tiktok' => 'https://www.tiktok.com/music/SA-PU-TANAH-PAPUA-7678227842179303441',
+            'spotify' => ['href' => 'https://open.spotify.com/track/7bimHjV1lllUlChNnAMt5v?si=c6480752999041af', 'active' => true],
+            'apple-music' => ['href' => 'https://music.apple.com/id/song/sa-pu-tanah-papua/6805356242', 'active' => true],
+            'tiktok' => ['href' => 'https://www.tiktok.com/music/SA-PU-TANAH-PAPUA-7678227842179303441', 'active' => true],
         ]),
-        'same_as' => ['https://open.spotify.com/track/7bimHjV1lllUlChNnAMt5v?si=c6480752999041af', 'https://music.apple.com/id/song/sa-pu-tanah-papua/6805356242', 'https://www.tiktok.com/music/SA-PU-TANAH-PAPUA-7678227842179303441', 'https://www.youtube.com/watch?v=k0Zc--bj2vc'],
+        'extra_same_as' => ['https://www.youtube.com/watch?v=k0Zc--bj2vc'],
         'video' => ['id' => 'k0Zc--bj2vc', 'href' => 'https://www.youtube.com/watch?v=k0Zc--bj2vc&list=RDk0Zc--bj2vc&start_radio=1', 'title' => 'DEVADATA — SAPUTANAH PAPUA', 'poster' => '/images/devadata/hero.jpg'],
     ],
     'kayl' => $common + [
@@ -51,11 +75,12 @@ return [
         'keywords' => ['KAYL', 'dar der D0R!!', 'Ples+', 'musik Indonesia', 'lagu baru'],
         'tagline' => ['dar der D0R!!'],
         'platforms' => $platforms([
-            'spotify' => 'https://open.spotify.com/search/KAYL%20dar%20der%20D0R',
-            'apple-music' => 'https://music.apple.com/id/song/meledak/6805356420',
-            'tiktok' => 'https://www.tiktok.com/music/Meledak-7678229289113176080',
+            'spotify' => ['href' => 'https://open.spotify.com/search/KAYL%20dar%20der%20D0R', 'active' => false],
+            'apple-music' => ['href' => 'https://music.apple.com/id/song/meledak/6805356420', 'active' => true],
+            'youtube-music' => ['href' => 'https://music.youtube.com/watch?v=3Up9jAEsDKE', 'active' => true],
+            'tiktok' => ['href' => 'https://www.tiktok.com/music/Meledak-7678229289113176080', 'active' => true],
         ]),
-        'same_as' => ['https://open.spotify.com/search/KAYL%20dar%20der%20D0R', 'https://music.apple.com/id/song/meledak/6805356420', 'https://www.tiktok.com/music/Meledak-7678229289113176080', 'https://www.youtube.com/watch?v=dgXfPAOGd4o', 'https://music.youtube.com/watch?v=3Up9jAEsDKE&si=UgxYiV8oFu8NxfLj'],
+        'extra_same_as' => ['https://www.youtube.com/watch?v=dgXfPAOGd4o'],
         'video' => ['id' => 'dgXfPAOGd4o', 'href' => 'https://www.youtube.com/watch?v=dgXfPAOGd4o', 'title' => 'KAYL — dar der D0R!!', 'poster' => '/images/kayl/hero.jpg'],
     ],
     'callii' => $common + [
@@ -69,11 +94,11 @@ return [
         'keywords' => ['CALLII', 'MULAI LAGI', 'Ples+', 'musik Indonesia', 'lagu baru'],
         'tagline' => ['Jatuh 7x, gw bangkit 8x', '“MULAI LAGI” out now on all platforms'],
         'platforms' => $platforms([
-            'spotify' => 'https://open.spotify.com/track/5hPbcmpqnRJafzAJv35dvE',
-            'apple-music' => 'https://music.apple.com/us/album/mulaii-llagi/6789538157',
-            'tiktok' => 'https://www.tiktok.com/music/MULAii-LLAGI-7660836886660040721',
+            'spotify' => ['href' => 'https://open.spotify.com/track/5hPbcmpqnRJafzAJv35dvE', 'active' => true],
+            'apple-music' => ['href' => 'https://music.apple.com/us/album/mulaii-llagi/6789538157', 'active' => true],
+            'tiktok' => ['href' => 'https://www.tiktok.com/music/MULAii-LLAGI-7660836886660040721', 'active' => true],
         ]),
-        'same_as' => ['https://open.spotify.com/track/5hPbcmpqnRJafzAJv35dvE', 'https://music.apple.com/us/album/mulaii-llagi/6789538157', 'https://www.tiktok.com/music/MULAii-LLAGI-7660836886660040721', 'https://www.instagram.com/reels/audio/886346697863290', 'https://www.youtube.com/watch?v=ZTLtF80nvf4'],
+        'extra_same_as' => ['https://www.instagram.com/reels/audio/886346697863290', 'https://www.youtube.com/watch?v=ZTLtF80nvf4'],
         'video' => ['id' => 'ZTLtF80nvf4', 'title' => 'CALLII — MULAI LAGI', 'poster' => '/images/callii/photo-collage.jpg'],
     ],
     'maf' => $common + [
@@ -85,11 +110,11 @@ return [
         'lcp_image_desktop' => '', 'lcp_image' => '/images/maf/hero.png', 'genre' => 'Hip-Hop', 'artist_same_as' => ['https://www.tiktok.com/@mafworld', 'https://www.instagram.com/mafintheair'],
         'keywords' => ['MAF', 'StarBoy', 'Ples+', 'musik Indonesia', 'lagu baru'], 'tagline' => ['StarBoy'],
         'platforms' => $platforms([
-            'spotify' => 'https://open.spotify.com/track/0QMEYe6fAQkgbPMRxx4pX',
-            'apple-music' => 'https://music.apple.com/id/album/maf/6795910681',
-            'tiktok' => 'https://www.tiktok.com/@mafworld',
+            'spotify' => ['href' => 'https://open.spotify.com/track/0QMEYe6fAQkgbPMRxx4pX', 'active' => true],
+            'apple-music' => ['href' => 'https://music.apple.com/id/album/maf/6795910681', 'active' => true],
+            'tiktok' => ['href' => 'https://www.tiktok.com/@mafworld', 'active' => true],
         ]),
-        'same_as' => ['https://open.spotify.com/track/0QMEYe6fAQkgbPMRxx4pX', 'https://music.apple.com/id/album/maf/6795910681', 'https://www.tiktok.com/@mafworld', 'https://www.instagram.com/mafintheair', 'https://youtu.be/IRp4ClBpGPM'],
+        'extra_same_as' => ['https://www.instagram.com/mafintheair', 'https://youtu.be/IRp4ClBpGPM'],
         'video' => ['id' => 'IRp4ClBpGPM', 'title' => 'MAF — StarBoy', 'poster' => '/images/maf/hero.png'],
     ],
     'lili' => $common + [
@@ -101,11 +126,11 @@ return [
         'lcp_image_desktop' => '', 'lcp_image' => '/images/lili/hero.jpg', 'genre' => 'Pop', 'artist_same_as' => [],
         'keywords' => ['LiLi', 'Honest', 'Ples+', 'musik Indonesia', 'lagu baru'], 'tagline' => ['Honest'],
         'platforms' => $platforms([
-            'spotify' => 'https://open.spotify.com/track/2hiz92sjwxQdcipghBRRDP',
-            'apple-music' => 'https://music.apple.com/id/album/honest-single/6799972819',
-            'tiktok' => 'https://vt.tiktok.com/ZS9khMsh2FdUy-O2UtG/',
+            'spotify' => ['href' => 'https://open.spotify.com/track/2hiz92sjwxQdcipghBRRDP', 'active' => true],
+            'apple-music' => ['href' => 'https://music.apple.com/id/album/honest-single/6799972819', 'active' => true],
+            'tiktok' => ['href' => 'https://vt.tiktok.com/ZS9khMsh2FdUy-O2UtG/', 'active' => true],
         ]),
-        'same_as' => ['https://open.spotify.com/track/2hiz92sjwxQdcipghBRRDP', 'https://music.apple.com/id/album/honest-single/6799972819', 'https://vt.tiktok.com/ZS9khMsh2FdUy-O2UtG/', 'https://found.ee/lili_honest', 'https://youtu.be/Lsx3tx8fve0'],
+        'extra_same_as' => ['https://found.ee/lili_honest', 'https://youtu.be/Lsx3tx8fve0'],
         'video' => ['id' => 'Lsx3tx8fve0', 'title' => 'LiLi — Honest', 'poster' => '/images/lili/video-poster.jpg'],
     ],
     'default' => $common + [
@@ -113,7 +138,18 @@ return [
         'title' => 'Ples+ Connect', 'description' => 'Make your own core.', 'default_url' => 'https://plesconnect.app',
         'theme_color' => '#000000', 'og_image' => '/images/global/ples-connect-logo.png', 'og_size' => [1200, 626],
         'og_image_alt' => 'Ples+ Connect logo', 'lcp_image_desktop' => '', 'lcp_image' => '', 'genre' => '', 'artist_same_as' => [],
-        'keywords' => ['Ples+', 'Ples Connect'], 'tagline' => [], 'platforms' => [], 'same_as' => [],
+        'keywords' => ['Ples+', 'Ples Connect'], 'tagline' => [], 'platforms' => [], 'extra_same_as' => [],
         'video' => ['id' => '', 'title' => '', 'poster' => ''],
     ],
 ];
+
+// sameAs is derived so it can never drift from the buttons: an inactive platform is
+// absent from both, and a changed URL only has to be edited in one place.
+foreach ($artists as $id => $artist) {
+    $artists[$id]['same_as'] = array_values(array_unique(array_merge(
+        array_column($artist['platforms'], 'href'),
+        $artist['extra_same_as'],
+    )));
+}
+
+return $artists;
