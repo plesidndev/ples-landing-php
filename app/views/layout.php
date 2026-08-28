@@ -53,7 +53,10 @@ if ($isArtist) {
     <link rel="icon" href="/icon.svg" type="image/svg+xml">
     <link rel="manifest" href="/manifest.webmanifest">
     <link rel="stylesheet" href="<?= e(asset_url('/assets/app.css')) ?>">
-    <?php if ($site['lcp_image'] !== ''): ?>
+    <?php if ($site['lcp_image'] !== '' && $site['lcp_image_desktop'] !== ''): ?>
+        <link rel="preload" as="image" href="<?= e($site['lcp_image']) ?>" media="(max-width: 767px)" fetchpriority="high">
+        <link rel="preload" as="image" href="<?= e($site['lcp_image_desktop']) ?>" media="(min-width: 768px)" fetchpriority="high">
+    <?php elseif ($site['lcp_image'] !== ''): ?>
         <link rel="preload" as="image" href="<?= e($site['lcp_image']) ?>" fetchpriority="high">
     <?php endif; ?>
     <?php if ($isArtist && $site['video']['id'] !== ''): ?>

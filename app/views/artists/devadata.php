@@ -13,15 +13,11 @@
         </section>
 
         <section aria-label="Devadata artwork" class="relative hidden w-full overflow-hidden md:sticky md:top-0 md:block md:h-screen">
-            <img src="/images/devadata/artwork.png" alt="SAPUTANAH PAPUA cover artwork" width="1100" height="1466" decoding="async" class="absolute inset-0 size-full object-contain object-center">
+            <h1 class="sr-only"><?= e($site['name']) ?> — <?= e($site['release']) ?></h1>
+            <img src="/images/devadata/artwork.png" alt="SAPUTANAH PAPUA cover artwork" width="1100" height="1466" decoding="async" class="absolute inset-0 size-full object-cover object-center">
         </section>
 
         <div class="flex min-w-0 flex-col gap-4 md:min-h-screen md:gap-3 md:pt-16">
-            <section class="relative hidden w-full shrink-0 overflow-hidden md:mx-auto md:block md:h-[clamp(220px,32vh,300px)] md:max-w-xl md:rounded-[28px]">
-                <h1 class="sr-only"><?= e($site['name']) ?> — <?= e($site['release']) ?></h1>
-                <img src="/images/devadata/hero.jpg" alt="DEVADATA band portrait" width="1920" height="1280" fetchpriority="high" decoding="async" class="absolute inset-0 size-full object-cover">
-            </section>
-
             <div><?php render('components/video', ['site' => $site]); ?></div>
 
             <section aria-label="Streaming links" class="flex flex-col gap-3 px-[18px]">
