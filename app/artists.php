@@ -5,13 +5,14 @@ declare(strict_types=1);
 $dspBrands = [
     'spotify' => ['name' => 'Spotify', 'icon' => '/images/dsp/spotify.svg', 'aspect' => 90.19 / 29.53],
     'apple-music' => ['name' => 'Apple Music', 'icon' => '/images/dsp/apple-music.png', 'aspect' => 920 / 221],
+    'youtube-music' => ['name' => 'YouTube Music', 'icon' => '/images/dsp/youtube-music.svg', 'aspect' => 196 / 24],
     'tiktok' => ['name' => 'TikTok', 'icon' => '/images/dsp/tiktok.png', 'aspect' => 658 / 161],
 ];
 
 $platforms = static function (array $links) use ($dspBrands): array {
     return array_map(
         static fn (string $id): array => ['id' => $id, 'href' => $links[$id]] + $dspBrands[$id],
-        array_keys($dspBrands),
+        array_keys($links),
     );
 };
 
@@ -41,18 +42,17 @@ return [
     'kayl' => $common + [
         'id' => 'kayl', 'view' => 'artists/kayl', 'name' => 'KAYL', 'release' => 'dar der D0R!!',
         'title' => 'KAYL — dar der D0R!! | Ples+',
-        'description' => 'Dengarkan “dar der D0R!!” dari KAYL sekarang di Spotify, Apple Music, dan TikTok.',
+        'description' => 'Dengarkan “dar der D0R!!” dari KAYL sekarang di Apple Music dan YouTube Music.',
         'default_url' => 'https://kayl.plesconnect.app', 'theme_color' => '#000000',
         'og_image' => '/images/kayl/hero.png', 'og_size' => [1917, 1080],
         'keywords' => ['KAYL', 'dar der D0R!!', 'Ples+', 'musik Indonesia', 'lagu baru'],
         'tagline' => ['dar der D0R!!'],
         'platforms' => $platforms([
-            'spotify' => 'https://open.spotify.com/search/KAYL%20dar%20der%20D0R',
-            'apple-music' => 'https://music.apple.com/id/search?term=KAYL%20dar%20der%20D0R',
-            'tiktok' => 'https://www.tiktok.com/search?q=KAYL%20dar%20der%20D0R',
+            'apple-music' => 'https://music.apple.com/id/song/meledak/6805356420',
+            'youtube-music' => 'https://music.youtube.com/watch?v=3Up9jAEsDKE&si=UgxYiV8oFu8NxfLj',
         ]),
-        'same_as' => ['https://open.spotify.com/search/KAYL%20dar%20der%20D0R', 'https://music.apple.com/id/search?term=KAYL%20dar%20der%20D0R', 'https://www.tiktok.com/search?q=KAYL%20dar%20der%20D0R'],
-        'video' => ['id' => '', 'href' => 'https://www.youtube.com/results?search_query=KAYL+dar+der+D0R', 'title' => 'KAYL — dar der D0R!!', 'poster' => '/images/kayl/hero.png'],
+        'same_as' => ['https://www.youtube.com/watch?v=dgXfPAOGd4o', 'https://music.apple.com/id/song/meledak/6805356420', 'https://music.youtube.com/watch?v=3Up9jAEsDKE&si=UgxYiV8oFu8NxfLj'],
+        'video' => ['id' => 'dgXfPAOGd4o', 'href' => 'https://www.youtube.com/watch?v=dgXfPAOGd4o', 'title' => 'KAYL — dar der D0R!!', 'poster' => '/images/kayl/hero.png'],
     ],
     'callii' => $common + [
         'id' => 'callii', 'view' => 'artists/callii', 'name' => 'CALLII', 'release' => 'MULAI LAGI',
