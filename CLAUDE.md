@@ -30,6 +30,10 @@ The hostname map is **derived from each artist's `default_url`** in `artists.php
 
 The `default` fallback is a silent failure mode worth knowing: it renders `noindex, nofollow`, serves `Disallow: /`, and canonicalises to `plesconnect.app`. An unknown or misspelled `artist_id` de-indexes the site rather than raising an error.
 
+`plesconnect.app` is deliberately excluded from search **while it is only a logo placeholder** — indexing a thin page now would put a weak result on record before the real landing page ships. Indexability is the per-artist `indexable` flag, which drives both the robots meta tag and `robots.txt`. It is intentionally separate from `$isArtist` in `layout.php`: `$isArtist` gates the `MusicGroup`/`MusicRecording` JSON-LD, so the hub can be made indexable without also claiming to be a music release. When real hub content lands, flip `indexable` to true — do not reintroduce an `id === 'default'` check.
+
+Note `$common + [...]` keeps `$common`'s value on key collision, so anything an artist must be able to override (like `indexable`) belongs in the artist's own array, not in `$common`.
+
 ### `app/artists.php` is the single source of truth
 
 Every per-artist value lives here — copy, SEO metadata, DSP links, `same_as`, video, OG image and its dimensions, `genre`, LCP image. Adding an artist means one entry here plus one view in `app/views/artists/`. Prefer extending this config over branching inside templates.

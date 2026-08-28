@@ -48,7 +48,7 @@ $common = [
 
 $artists = [
     'devadata' => $common + [
-        'id' => 'devadata', 'view' => 'artists/devadata', 'name' => 'DEVADATA', 'release' => 'SAPUTANAH PAPUA',
+        'id' => 'devadata', 'indexable' => true, 'crawlable' => true, 'view' => 'artists/devadata', 'name' => 'DEVADATA', 'release' => 'SAPUTANAH PAPUA',
         'title' => 'DEVADATA — SAPUTANAH PAPUA | Ples+',
         'description' => 'Dengarkan “SAPUTANAH PAPUA” dari DEVADATA sekarang di Spotify, Apple Music, dan TikTok.',
         'default_url' => 'https://devadata.plesconnect.app', 'theme_color' => '#120b09',
@@ -66,7 +66,7 @@ $artists = [
         'video' => ['id' => 'k0Zc--bj2vc', 'href' => 'https://www.youtube.com/watch?v=k0Zc--bj2vc&list=RDk0Zc--bj2vc&start_radio=1', 'title' => 'DEVADATA — SAPUTANAH PAPUA', 'poster' => '/images/devadata/hero.jpg'],
     ],
     'kayl' => $common + [
-        'id' => 'kayl', 'view' => 'artists/kayl', 'name' => 'KAYL', 'release' => 'dar der D0R!!',
+        'id' => 'kayl', 'indexable' => true, 'crawlable' => true, 'view' => 'artists/kayl', 'name' => 'KAYL', 'release' => 'dar der D0R!!',
         'title' => 'KAYL — dar der D0R!! | Ples+',
         'description' => 'Dengarkan “dar der D0R!!” dari KAYL sekarang di Spotify, Apple Music, dan TikTok.',
         'default_url' => 'https://kayl.plesconnect.app', 'theme_color' => '#000000',
@@ -85,7 +85,7 @@ $artists = [
         'video' => ['id' => 'dgXfPAOGd4o', 'href' => 'https://www.youtube.com/watch?v=dgXfPAOGd4o', 'title' => 'KAYL — dar der D0R!!', 'poster' => '/images/kayl/hero.jpg'],
     ],
     'callii' => $common + [
-        'id' => 'callii', 'view' => 'artists/callii', 'name' => 'CALLII', 'release' => 'MULAI LAGI',
+        'id' => 'callii', 'indexable' => true, 'crawlable' => true, 'view' => 'artists/callii', 'name' => 'CALLII', 'release' => 'MULAI LAGI',
         'title' => 'CALLII — MULAI LAGI | Ples+',
         'description' => 'Jatuh 7x, gw bangkit 8x. Dengerin “MULAI LAGI” dari CALLII sekarang di Spotify, Apple Music, dan TikTok.',
         'default_url' => 'https://callii.plesconnect.app', 'theme_color' => '#000000',
@@ -103,7 +103,7 @@ $artists = [
         'video' => ['id' => 'ZTLtF80nvf4', 'title' => 'CALLII — MULAI LAGI', 'poster' => '/images/callii/photo-collage.jpg'],
     ],
     'maf' => $common + [
-        'id' => 'maf', 'view' => 'artists/maf', 'name' => 'MAF', 'release' => 'StarBoy',
+        'id' => 'maf', 'indexable' => true, 'crawlable' => true, 'view' => 'artists/maf', 'name' => 'MAF', 'release' => 'StarBoy',
         'title' => 'MAF — StarBoy | Ples+', 'description' => 'Dengarkan StarBoy dari MAF sekarang di Spotify, Apple Music, dan TikTok.',
         'default_url' => 'https://maf.plesconnect.app', 'theme_color' => '#0b241f',
         'og_image' => '/images/maf/og-image.jpg', 'og_size' => [1200, 630],
@@ -119,7 +119,7 @@ $artists = [
         'video' => ['id' => 'IRp4ClBpGPM', 'title' => 'MAF — StarBoy', 'poster' => '/images/maf/hero.png'],
     ],
     'lili' => $common + [
-        'id' => 'lili', 'view' => 'artists/lili', 'name' => 'LiLi', 'release' => 'Honest',
+        'id' => 'lili', 'indexable' => true, 'crawlable' => true, 'view' => 'artists/lili', 'name' => 'LiLi', 'release' => 'Honest',
         'title' => 'LiLi — Honest | Ples+', 'description' => 'Dengarkan “Honest” dari LiLi sekarang di Spotify, Apple Music, dan TikTok.',
         'default_url' => 'https://lili.plesconnect.app', 'theme_color' => '#0b0b0b',
         'og_image' => '/images/lili/og-image.jpg', 'og_size' => [1200, 630],
@@ -135,7 +135,7 @@ $artists = [
         'video' => ['id' => 'Lsx3tx8fve0', 'title' => 'LiLi — Honest', 'poster' => '/images/lili/video-poster.jpg'],
     ],
     'default' => $common + [
-        'id' => 'default', 'view' => 'artists/default', 'name' => 'Ples+ Connect', 'release' => '',
+        'id' => 'default', 'indexable' => false, 'crawlable' => true, 'view' => 'artists/default', 'name' => 'Ples+ Connect', 'release' => '',
         'title' => 'Ples+ Connect', 'description' => 'Make your own core.', 'default_url' => 'https://plesconnect.app',
         'theme_color' => '#000000', 'og_image' => '/images/global/ples-connect-logo.png', 'og_size' => [1200, 626],
         'og_image_alt' => 'Ples+ Connect logo', 'lcp_image_desktop' => '', 'lcp_image' => '', 'genre' => '', 'artist_same_as' => [],

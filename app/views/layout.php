@@ -1,7 +1,11 @@
 <?php
 $isArtist = $site['id'] !== 'default';
 $isError ??= false;
-$robots ??= $isArtist ? 'index, follow, max-image-preview:large, max-video-preview:-1, max-snippet:-1' : 'noindex, nofollow';
+// Indexability is its own switch: the hub can become indexable without also turning on
+// the MusicGroup/MusicRecording schema, which $isArtist still gates.
+$robots ??= $site['indexable']
+    ? 'index, follow, max-image-preview:large, max-video-preview:-1, max-snippet:-1'
+    : ($site['crawlable'] ? 'noindex, follow' : 'noindex, nofollow');
 $title ??= $site['title'];
 
 $schema = [];

@@ -25,7 +25,14 @@ require $bootstrap;
 if ($path === '/robots.txt') {
     header('Content-Type: text/plain; charset=utf-8');
     echo "User-agent: *\n";
-    echo $site['id'] === 'default' ? "Disallow: /\n" : "Allow: /\nSitemap: {$site['url']}/sitemap.xml\n";
+    // A sitemap must only advertise indexable URLs, so it is listed separately
+    // from crawlability: the hub is crawled for its links but not submitted.
+    if (!$site['crawlable']) {
+        echo "Disallow: /\n";
+    } else {
+        echo "Allow: /\n";
+        echo $site['indexable'] ? "Sitemap: {$site['url']}/sitemap.xml\n" : '';
+    }
     exit;
 }
 

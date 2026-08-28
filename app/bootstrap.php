@@ -31,6 +31,21 @@ $artistId = array_key_exists($configuredArtist, $artists) ? $configuredArtist : 
 $site = $artists[$artistId];
 $site['url'] = rtrim(getenv('SITE_URL') ?: ($fileEnvironment['site_url'] ?? '') ?: $site['default_url'], '/');
 
+// Other artists, used by the hub page to list them. Excludes the current site, so an
+// artist page would never link to itself if this is ever reused there.
+$site['siblings'] = [];
+foreach ($artists as $siblingId => $sibling) {
+    if ($siblingId === 'default' || $siblingId === $artistId) {
+        continue;
+    }
+
+    $site['siblings'][] = [
+        'name' => $sibling['name'],
+        'release' => $sibling['release'],
+        'url' => $sibling['default_url'],
+    ];
+}
+
 $environment = [
     'ga_id' => getenv('GA_ID') ?: ($fileEnvironment['ga_id'] ?? ''),
     'google_site_verification' => getenv('GOOGLE_SITE_VERIFICATION') ?: ($fileEnvironment['google_site_verification'] ?? ''),
