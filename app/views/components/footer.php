@@ -1,6 +1,6 @@
 <?php $maf ??= false; ?>
 <footer class="flex h-[52px] w-full items-center justify-between bg-[#d9d9d9]/20 px-4 shadow-[4px_0_4px_rgba(0,0,0,0.25)] backdrop-blur-lg <?= $maf ? '' : 'md:backdrop-blur-none' ?>">
-    <img src="/images/global/ples-connect-logo.png" alt="Ples+ Connect" width="1200" height="626" loading="lazy" decoding="async" class="h-9 w-auto shrink-0">
+    <a href="<?= e($site['hub_url']) ?>" aria-label="Ples+ Connect" class="block shrink-0 transition-opacity hover:opacity-80"><img src="/images/global/ples-connect-logo.png" alt="" width="1200" height="626" loading="lazy" decoding="async" class="h-9 w-auto"></a>
     <div class="flex shrink-0 flex-col items-end gap-[3px]">
         <p class="font-display text-[15px] leading-none tracking-[-0.333px] text-white">make your own core</p>
         <div class="flex items-center gap-1.5">

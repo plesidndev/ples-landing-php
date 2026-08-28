@@ -42,6 +42,7 @@ $platforms = static function (array $links) use ($dspBrands): array {
 $common = [
     'locale' => 'id_ID',
     'background_color' => '#000000',
+    'hub_url' => 'https://plesconnect.app',
     'app_stores' => ['google_play' => 'https://play.google.com', 'apple_store' => 'https://apps.apple.com'],
 ];
 
@@ -57,7 +58,7 @@ $artists = [
         'keywords' => ['DEVADATA', 'SAPUTANAH PAPUA', 'Ples+', 'musik Indonesia', 'lagu baru'],
         'tagline' => ['SAPUTANAH PAPUA'],
         'platforms' => $platforms([
-            'spotify' => ['href' => 'https://open.spotify.com/track/7bimHjV1lllUlChNnAMt5v?si=c6480752999041af', 'active' => true],
+            'spotify' => ['href' => 'https://open.spotify.com/track/7bimHjV1lllUlChNnAMt5v', 'active' => true],
             'apple-music' => ['href' => 'https://music.apple.com/id/song/sa-pu-tanah-papua/6805356242', 'active' => true],
             'tiktok' => ['href' => 'https://www.tiktok.com/music/SA-PU-TANAH-PAPUA-7678227842179303441', 'active' => true],
         ]),
@@ -75,7 +76,7 @@ $artists = [
         'keywords' => ['KAYL', 'dar der D0R!!', 'Ples+', 'musik Indonesia', 'lagu baru'],
         'tagline' => ['dar der D0R!!'],
         'platforms' => $platforms([
-            'spotify' => ['href' => 'https://open.spotify.com/search/KAYL%20dar%20der%20D0R', 'active' => false],
+            'spotify' => ['href' => 'https://open.spotify.com/track/76485dUp19wqpqNRg2xYLo', 'active' => true],
             'apple-music' => ['href' => 'https://music.apple.com/id/song/meledak/6805356420', 'active' => true],
             'youtube-music' => ['href' => 'https://music.youtube.com/watch?v=3Up9jAEsDKE', 'active' => true],
             'tiktok' => ['href' => 'https://www.tiktok.com/music/Meledak-7678229289113176080', 'active' => true],
