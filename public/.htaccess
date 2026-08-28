@@ -30,6 +30,10 @@ RewriteRule ^ index.php [L]
     AddOutputFilterByType BROTLI_COMPRESS image/svg+xml
 </IfModule>
 
+<IfModule mod_mime.c>
+    AddType image/webp .webp
+</IfModule>
+
 <IfModule mod_expires.c>
     ExpiresActive On
     # CSS and JS are requested with a ?v=<filemtime> string, so they can be cached hard.
@@ -40,6 +44,7 @@ RewriteRule ^ index.php [L]
     ExpiresByType image/png "access plus 1 month"
     ExpiresByType image/jpeg "access plus 1 month"
     ExpiresByType image/svg+xml "access plus 1 month"
+    ExpiresByType image/webp "access plus 1 month"
     ExpiresByType application/manifest+json "access plus 1 week"
     ExpiresDefault "access plus 1 day"
 </IfModule>
@@ -48,11 +53,13 @@ RewriteRule ^ index.php [L]
     <FilesMatch "\.(css|js|woff2)$">
         Header set Cache-Control "public, max-age=31536000"
     </FilesMatch>
-    <FilesMatch "\.(png|jpe?g|svg)$">
+    <FilesMatch "\.(png|jpe?g|svg|webp)$">
         Header set Cache-Control "public, max-age=2592000"
     </FilesMatch>
 </IfModule>
 
+# Canonical host/scheme redirects are handled in index.php, which knows each
+# artist's preferred URL. The block below is a belt-and-braces fallback only.
 # Hostinger's "Force HTTPS" toggle already handles this. Only enable the block
 # below if that toggle is unavailable, and verify no redirect loop behind the proxy.
 # <IfModule mod_rewrite.c>

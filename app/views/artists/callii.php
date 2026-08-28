@@ -1,9 +1,9 @@
 <main class="relative flex-1">
-    <div class="fixed inset-0 -z-10"><img src="/images/callii/hero-swirl-bg.jpg" alt="" decoding="async" class="size-full object-cover"></div>
+    <div class="fixed inset-0 -z-10"><?= responsive_img('/images/callii/hero-swirl-bg.jpg', '', '100vw', ['decoding' => 'async', 'class' => 'size-full object-cover']) ?></div>
     <?php render('components/artist-header', ['site' => $site]); ?>
     <div class="md:grid md:min-h-screen md:grid-cols-2">
         <section aria-label="CALLII photo collage" class="relative aspect-square w-full overflow-hidden md:sticky md:top-0 md:h-screen md:aspect-auto">
-            <img src="/images/callii/photo-collage.jpg" alt="CALLII photo collage from the MULAI LAGI era" width="600" height="600" fetchpriority="high" decoding="async" class="absolute inset-0 size-full object-cover">
+            <?= responsive_img('/images/callii/photo-collage.jpg', 'CALLII photo collage from the MULAI LAGI era', '(min-width: 768px) 50vw, 100vw', ['width' => 600, 'height' => 600, 'fetchpriority' => 'high', 'decoding' => 'async', 'class' => 'absolute inset-0 size-full object-cover']) ?>
         </section>
         <div class="flex min-w-0 flex-col md:min-h-screen md:pt-16">
             <section class="relative w-full px-4 pb-6 pt-16 text-center md:pt-6">

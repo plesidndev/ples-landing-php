@@ -6,7 +6,7 @@ $path = parse_url($_SERVER['REQUEST_URI'] ?? '/', PHP_URL_PATH) ?: '/';
 
 // Under `php -S ... public/index.php` this file is the router, so hand real files
 // back to the built-in server the way Apache's rewrite conditions do in production.
-if (PHP_SAPI === 'cli-server' && $path !== '/' && is_file(__DIR__ . $path)) {
+if (PHP_SAPI === 'cli-server' && $path !== '/' && !str_ends_with($path, '.php') && is_file(__DIR__ . $path)) {
     return false;
 }
 
@@ -46,18 +46,52 @@ if ($path === '/manifest.webmanifest') {
     exit;
 }
 
-// A single-page site has exactly one real URL. Consolidate every other page path
-// onto it instead of serving the full home page under a 404 (a soft 404), but let
-// missing static assets 404 properly rather than redirecting them to HTML.
+// Canonicalisation: one preferred origin per artist. Anything reaching a different
+// scheme or hostname (http, www., a server alias) is redirected to the canonical URL
+// so search engines never see the same page under several addresses.
+$canonical = parse_url($site['url']) ?: [];
+$canonicalHost = strtolower($canonical['host'] ?? '');
+$canonicalScheme = strtolower($canonical['scheme'] ?? '');
+
+$requestHost = strtolower(preg_replace('/:\d+$/', '', $_SERVER['HTTP_HOST'] ?? '') ?? '');
+$forwarded = strtolower(trim(explode(',', $_SERVER['HTTP_X_FORWARDED_PROTO'] ?? '')[0]));
+$requestScheme = $forwarded !== ''
+    ? $forwarded
+    : ((($_SERVER['HTTPS'] ?? 'off') !== 'off') ? 'https' : 'http');
+
+// Only enforced for real https deployments, so local http development is untouched.
+if (PHP_SAPI !== 'cli-server' && $canonicalScheme === 'https' && $canonicalHost !== ''
+    && ($requestHost !== $canonicalHost || $requestScheme !== $canonicalScheme)) {
+    $query = ($_SERVER['QUERY_STRING'] ?? '') !== '' ? '?' . $_SERVER['QUERY_STRING'] : '';
+    http_response_code(301);
+    header('Location: ' . $site['url'] . ($path === '/' ? '/' : $path) . $query);
+    exit;
+}
+
+// Genuine equivalents of the home page are redirected; everything else is really
+// missing. Redirecting all unknown paths to the home page is itself treated as a
+// soft 404, so those get a real 404 with a branded page instead.
+if (in_array($path, ['/index.php', '/index.html', '//'], true)) {
+    http_response_code(301);
+    header('Location: ' . $site['url'] . '/');
+    exit;
+}
+
 if ($path !== '/') {
+    http_response_code(404);
+
+    // Missing assets should not cost a full HTML render.
     if (preg_match('/\.[a-z0-9]{2,5}$/i', $path)) {
-        http_response_code(404);
         header('Content-Type: text/plain; charset=utf-8');
         exit("Not Found\n");
     }
 
-    http_response_code(301);
-    header('Location: ' . $site['url'] . '/');
+    ob_start();
+    render('not-found', ['site' => $site]);
+    $content = (string) ob_get_clean();
+
+    render('layout', ['site' => $site, 'environment' => $environment, 'content' => $content,
+        'robots' => 'noindex, follow', 'title' => 'Halaman tidak ditemukan — ' . $site['name'], 'isError' => true]);
     exit;
 }
 

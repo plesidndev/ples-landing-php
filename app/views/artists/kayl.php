@@ -1,10 +1,10 @@
 <main class="relative min-h-screen overflow-hidden">
-    <div class="fixed inset-0 -z-10 bg-black"><img src="/images/kayl/bg-pattern.jpg" alt="" decoding="async" class="size-full object-cover"></div>
+    <div class="fixed inset-0 -z-10 bg-black"><?= responsive_img('/images/kayl/bg-pattern.jpg', '', '100vw', ['decoding' => 'async', 'class' => 'size-full object-cover']) ?></div>
     <?php render('components/artist-header', ['site' => $site, 'maxWidth' => 'max-w-[402px] md:max-w-none', 'leftClass' => 'h-[31px] w-[136px] object-cover object-left', 'rightClass' => 'h-[27px] w-[24px]']); ?>
 
     <div class="mx-auto flex w-full max-w-[402px] flex-col gap-[13px] md:max-w-none md:grid md:min-h-screen md:grid-cols-2 md:gap-0">
         <section aria-label="KAYL artwork" class="relative aspect-video w-full overflow-hidden md:sticky md:top-0 md:h-screen md:aspect-auto">
-            <img src="/images/kayl/hero.jpg" alt="KAYL portrait" width="1920" height="1082" fetchpriority="high" decoding="async" class="absolute inset-0 size-full object-cover">
+            <?= responsive_img('/images/kayl/hero.jpg', 'KAYL portrait', '(min-width: 768px) 50vw, 100vw', ['width' => 1920, 'height' => 1082, 'fetchpriority' => 'high', 'decoding' => 'async', 'class' => 'absolute inset-0 size-full object-cover']) ?>
         </section>
 
         <div class="flex min-w-0 flex-col gap-[13px] md:min-h-screen md:pt-16">

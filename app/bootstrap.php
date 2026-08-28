@@ -7,6 +7,9 @@ require APP_PATH . '/helpers.php';
 
 $artists = require APP_PATH . '/artists.php';
 $host = strtolower(preg_replace('/:\d+$/', '', $_SERVER['HTTP_HOST'] ?? '') ?? '');
+// www.lili.plesconnect.app must resolve to the same artist as the apex so it can be
+// redirected there, rather than falling through to the noindex default site.
+$host = preg_replace('/^www\./', '', $host) ?? $host;
 // Derived from artists.php so a new artist cannot be added without its hostname.
 $hostMap = [];
 foreach ($artists as $id => $artist) {

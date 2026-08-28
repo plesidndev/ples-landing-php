@@ -11,6 +11,8 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 npm run build                # compile Tailwind -> public/assets/app.css (minified)
 npm run dev                  # same, in --watch mode
 
+./tools/build-images.sh      # regenerate responsive WebP/JPEG/PNG derivatives
+
 php -l <file>                # syntax check; there is no test suite, linter, or CI in this repo
 ```
 
@@ -43,7 +45,17 @@ Fields that carry real consequences:
 
 `public/index.php` → `app/bootstrap.php` (defines `$site`, `$environment`) → renders the artist view into `$content` → renders `layout` around it. `render()` in `app/helpers.php` is `extract()` + `require`, so view variables are passed as an array. Note `absolute_url()` and `site_last_modified()` reach for `global $site`, which resolves to the one bootstrap defines.
 
-`index.php` also serves `/robots.txt`, `/sitemap.xml`, and `/manifest.webmanifest` dynamically — they are not files on disk. Any other path 301s to the canonical root, except paths that look like assets (`\.[a-z0-9]{2,5}$`), which return a plain 404. This split is deliberate: serving the full home page under a 404 is a soft 404, and redirecting a missing image to an HTML page is worse than 404ing it.
+`index.php` also serves `/robots.txt`, `/sitemap.xml`, and `/manifest.webmanifest` dynamically — they are not files on disk.
+
+Request handling order, all of it deliberate:
+
+1. **Canonical origin.** A request whose scheme or host differs from the artist's `site_url` (http, `www.`, a server alias) 301s to the canonical URL, preserving path and query. `bootstrap.php` strips a leading `www.` before the hostname lookup so `www.<artist>` resolves to that artist rather than falling through to the noindex default. Only enforced when the canonical is https, so local http development is untouched.
+2. **Genuine equivalents** (`/index.php`, `/index.html`) 301 to `/`.
+3. **Everything else 404s** — a branded `app/views/not-found.php` for page paths, plain text for asset-looking paths (`\.[a-z0-9]{2,5}$`) so a missing image does not cost a full HTML render.
+
+Do not "fix" step 3 by redirecting unknown paths to the home page. Serving the home page *under* a 404 is a soft 404, but so is mass-redirecting missing URLs to the home page — Google treats both the same way. A single-page site has exactly one real URL; everything else is genuinely missing.
+
+`layout.php` accepts `robots`, `title`, and `isError` overrides so the 404 can suppress the JSON-LD, the LCP preload, and indexing without a second layout.
 
 ### Desktop layout pattern
 
@@ -63,7 +75,13 @@ Mobile is the same markup unstacked, so content order in the right column is als
 
 **Compiled CSS is committed on purpose** — production runs PHP only, with no Node. After changing any template or Tailwind style, run `npm run build` and commit `public/assets/app.css`. Tailwind scans the `@source` globs declared in `resources/css/app.css`.
 
-`asset_url()` appends `?v=<filemtime>` to CSS/JS, which is what allows `.htaccess` to set a one-year cache on them. Images keep stable filenames and get one month, so a changed image needs a new filename to bust caches.
+The compiled CSS is **inlined** into `<style>` by `inline_css()`, not linked — it is the only render-blocking request the page would otherwise have, and these are single-visit landing pages where a cached stylesheet rarely pays off. `layout.php` falls back to a `<link>` if the file cannot be read. `asset_url()` still appends `?v=<filemtime>` to the JS, which is what allows `.htaccess` to cache it for a year.
+
+Layout images go through `responsive_img($src, $alt, $sizes, $attrs)`, which emits a `<picture>` with a WebP source plus the original format, building both srcsets from whatever `<name>-<width>.<ext>` files `./tools/build-images.sh` produced. Add a new source to the `SOURCES` list in that script, re-run it, and commit the derivatives — production has no image pipeline, same reason the CSS is committed.
+
+The LCP preload uses `preload_image()`, which shares `image_srcset()` with `responsive_img()` so the preload and the render pick the same file. A plain `<link rel="preload" href="...">` next to a `srcset` downloads two images; do not reintroduce one.
+
+Images keep stable filenames and get a one-month cache, so a changed image needs a new filename to bust caches.
 
 Image format rule: opaque photos are JPEG, genuine transparency stays PNG. `sips -g hasAlpha` reports an alpha *channel*, which photos routinely carry unused — decode and check whether any pixel is actually non-opaque before converting, or you will convert something that needs its transparency. `sips` also flattens alpha to **white**, so an image destined for a coloured background must be composited first.
 
