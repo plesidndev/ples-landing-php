@@ -31,11 +31,11 @@ return [
         'keywords' => ['DEVADATA', 'SAPUTANAH PAPUA', 'Ples+', 'musik Indonesia', 'lagu baru'],
         'tagline' => ['SAPUTANAH PAPUA'],
         'platforms' => $platforms([
-            'spotify' => 'https://open.spotify.com/search/DEVADATA%20SAPUTANAH%20PAPUA',
-            'apple-music' => 'https://music.apple.com/id/search?term=DEVADATA%20SAPUTANAH%20PAPUA',
+            'spotify' => 'https://open.spotify.com/track/7bimHjV1lllUlChNnAMt5v?si=c6480752999041af',
+            'apple-music' => 'https://music.apple.com/id/song/sa-pu-tanah-papua/6805356242',
             'tiktok' => 'https://www.tiktok.com/search?q=DEVADATA%20SAPUTANAH%20PAPUA',
         ]),
-        'same_as' => ['https://open.spotify.com/search/DEVADATA%20SAPUTANAH%20PAPUA', 'https://music.apple.com/id/search?term=DEVADATA%20SAPUTANAH%20PAPUA', 'https://www.tiktok.com/search?q=DEVADATA%20SAPUTANAH%20PAPUA', 'https://www.youtube.com/watch?v=k0Zc--bj2vc'],
+        'same_as' => ['https://open.spotify.com/track/7bimHjV1lllUlChNnAMt5v?si=c6480752999041af', 'https://music.apple.com/id/song/sa-pu-tanah-papua/6805356242', 'https://www.tiktok.com/search?q=DEVADATA%20SAPUTANAH%20PAPUA', 'https://www.youtube.com/watch?v=k0Zc--bj2vc'],
         'video' => ['id' => 'k0Zc--bj2vc', 'href' => 'https://www.youtube.com/watch?v=k0Zc--bj2vc&list=RDk0Zc--bj2vc&start_radio=1', 'title' => 'DEVADATA — SAPUTANAH PAPUA', 'poster' => '/images/devadata/hero.png'],
     ],
     'kayl' => $common + [
