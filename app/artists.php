@@ -35,9 +35,9 @@ return [
         'platforms' => $platforms([
             'spotify' => 'https://open.spotify.com/track/7bimHjV1lllUlChNnAMt5v?si=c6480752999041af',
             'apple-music' => 'https://music.apple.com/id/song/sa-pu-tanah-papua/6805356242',
-            'tiktok' => 'https://www.tiktok.com/search?q=DEVADATA%20SAPUTANAH%20PAPUA',
+            'tiktok' => 'https://www.tiktok.com/music/SA-PU-TANAH-PAPUA-7678227842179303441',
         ]),
-        'same_as' => ['https://open.spotify.com/track/7bimHjV1lllUlChNnAMt5v?si=c6480752999041af', 'https://music.apple.com/id/song/sa-pu-tanah-papua/6805356242', 'https://www.tiktok.com/search?q=DEVADATA%20SAPUTANAH%20PAPUA', 'https://www.youtube.com/watch?v=k0Zc--bj2vc'],
+        'same_as' => ['https://open.spotify.com/track/7bimHjV1lllUlChNnAMt5v?si=c6480752999041af', 'https://music.apple.com/id/song/sa-pu-tanah-papua/6805356242', 'https://www.tiktok.com/music/SA-PU-TANAH-PAPUA-7678227842179303441', 'https://www.youtube.com/watch?v=k0Zc--bj2vc'],
         'video' => ['id' => 'k0Zc--bj2vc', 'href' => 'https://www.youtube.com/watch?v=k0Zc--bj2vc&list=RDk0Zc--bj2vc&start_radio=1', 'title' => 'DEVADATA — SAPUTANAH PAPUA', 'poster' => '/images/devadata/hero.jpg'],
     ],
     'kayl' => $common + [
@@ -53,9 +53,9 @@ return [
         'platforms' => $platforms([
             'spotify' => 'https://open.spotify.com/search/KAYL%20dar%20der%20D0R',
             'apple-music' => 'https://music.apple.com/id/song/meledak/6805356420',
-            'tiktok' => 'https://www.tiktok.com/search?q=KAYL%20dar%20der%20D0R',
+            'tiktok' => 'https://www.tiktok.com/music/Meledak-7678229289113176080',
         ]),
-        'same_as' => ['https://open.spotify.com/search/KAYL%20dar%20der%20D0R', 'https://music.apple.com/id/song/meledak/6805356420', 'https://www.tiktok.com/search?q=KAYL%20dar%20der%20D0R', 'https://www.youtube.com/watch?v=dgXfPAOGd4o', 'https://music.youtube.com/watch?v=3Up9jAEsDKE&si=UgxYiV8oFu8NxfLj'],
+        'same_as' => ['https://open.spotify.com/search/KAYL%20dar%20der%20D0R', 'https://music.apple.com/id/song/meledak/6805356420', 'https://www.tiktok.com/music/Meledak-7678229289113176080', 'https://www.youtube.com/watch?v=dgXfPAOGd4o', 'https://music.youtube.com/watch?v=3Up9jAEsDKE&si=UgxYiV8oFu8NxfLj'],
         'video' => ['id' => 'dgXfPAOGd4o', 'href' => 'https://www.youtube.com/watch?v=dgXfPAOGd4o', 'title' => 'KAYL — dar der D0R!!', 'poster' => '/images/kayl/hero.jpg'],
     ],
     'callii' => $common + [
