@@ -1,9 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 196 24" role="img" aria-labelledby="title">
-  <title id="title">YouTube Music</title>
-  <g fill="none" fill-rule="evenodd">
-    <circle cx="12" cy="12" r="11" stroke="#fff" stroke-width="2"/>
-    <circle cx="12" cy="12" r="7" fill="#fff"/>
-    <path fill="#f00" d="M10 8.5v7l6-3.5z"/>
-    <text x="28" y="17" fill="#fff" font-family="Arial, Helvetica, sans-serif" font-size="15" font-weight="700">YouTube Music</text>
-  </g>
-</svg>
