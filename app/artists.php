@@ -136,9 +136,13 @@ $artists = [
     ],
     'default' => $common + [
         'id' => 'default', 'indexable' => false, 'crawlable' => true, 'view' => 'artists/default', 'name' => 'Ples+ Connect', 'release' => '',
-        'title' => 'Ples+ Connect', 'description' => 'Make your own core.', 'default_url' => 'https://plesconnect.app',
-        'theme_color' => '#000000', 'og_image' => '/images/global/ples-connect-logo.png', 'og_size' => [1200, 626],
-        'og_image_alt' => 'Ples+ Connect logo', 'lcp_image_desktop' => '', 'lcp_image' => '', 'genre' => '', 'artist_same_as' => [],
+        'title' => 'Ples+ Connect — Make Your Own Core',
+        'description' => 'Dengarkan rilis terbaru dari DEVADATA, KAYL, CALLII, MAF, dan LiLi di Spotify, Apple Music, YouTube Music, dan TikTok.',
+        'default_url' => 'https://plesconnect.app',
+        // Dedicated card: the logo PNG is white-on-transparent, which social scrapers
+        // flatten to white and render as a blank image.
+        'theme_color' => '#000000', 'og_image' => '/images/global/og-image.jpg', 'og_size' => [1200, 630],
+        'og_image_alt' => 'Ples+ Connect — make your own core', 'lcp_image_desktop' => '', 'lcp_image' => '', 'genre' => '', 'artist_same_as' => [],
         'keywords' => ['Ples+', 'Ples Connect'], 'tagline' => [], 'platforms' => [], 'extra_same_as' => [],
         'video' => ['id' => '', 'title' => '', 'poster' => ''],
     ],
