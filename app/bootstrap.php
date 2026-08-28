@@ -7,11 +7,17 @@ require APP_PATH . '/helpers.php';
 
 $artists = require APP_PATH . '/artists.php';
 $host = strtolower(preg_replace('/:\d+$/', '', $_SERVER['HTTP_HOST'] ?? '') ?? '');
-$hostMap = [
-    'callii.plesconnect.app' => 'callii',
-    'maf.plesconnect.app' => 'maf',
-    'lili.plesconnect.app' => 'lili',
-];
+// Derived from artists.php so a new artist cannot be added without its hostname.
+$hostMap = [];
+foreach ($artists as $id => $artist) {
+    if ($id === 'default') {
+        continue;
+    }
+    $artistHost = strtolower((string) parse_url($artist['default_url'], PHP_URL_HOST));
+    if ($artistHost !== '') {
+        $hostMap[$artistHost] = $id;
+    }
+}
 
 $fileEnvironment = is_file(APP_PATH . '/environment.php')
     ? require APP_PATH . '/environment.php'

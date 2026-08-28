@@ -32,3 +32,21 @@ function json_script(array $data): string
 {
     return json_encode($data, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE | JSON_HEX_TAG) ?: '{}';
 }
+
+function site_last_modified(): string
+{
+    global $site;
+
+    $sources = [APP_PATH . '/artists.php', APP_PATH . '/views/' . $site['view'] . '.php'];
+    $times = array_filter(array_map(static fn (string $file): int => is_file($file) ? (int) filemtime($file) : 0, $sources));
+
+    return gmdate('Y-m-d', $times ? max($times) : time());
+}
+
+function asset_url(string $path): string
+{
+    $file = dirname(APP_PATH) . '/public' . $path;
+    $version = is_file($file) ? (int) filemtime($file) : 0;
+
+    return $version > 0 ? $path . '?v=' . $version : $path;
+}

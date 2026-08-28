@@ -51,4 +51,4 @@ echo "Running artist '$ARTIST_ID' at http://localhost:$PORT"
 echo "Press Ctrl+C to stop."
 
 cd "$PROJECT_DIR"
-exec env ARTIST_ID="$ARTIST_ID" SITE_URL="http://localhost:$PORT" php -S "localhost:$PORT" -t public
+exec env ARTIST_ID="$ARTIST_ID" SITE_URL="http://localhost:$PORT" php -S "localhost:$PORT" -t public public/index.php
