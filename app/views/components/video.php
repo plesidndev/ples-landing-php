@@ -4,6 +4,7 @@ $figmaMobile ??= false;
 $videoAspectClass = $figmaMobile ? 'aspect-[2/1] md:aspect-video' : 'aspect-video';
 ?>
 <section aria-label="Music video" class="w-full py-6 <?= $figmaMobile ? 'px-[25px] md:px-4' : 'px-4' ?> <?= $compactDesktop ? 'md:py-2' : '' ?>">
+    <h2 class="sr-only">Video musik <?= e($site['release']) ?> dari <?= e($site['name']) ?></h2>
     <div class="mx-auto max-w-sm <?= $compactDesktop ? 'md:max-w-[280px]' : '' ?>">
         <?php if ($site['video']['id'] !== ''): ?>
         <button type="button" data-video="<?= e($site['video']['id']) ?>" data-title="<?= e($site['video']['title']) ?>" aria-label="Play video: <?= e($site['video']['title']) ?>" class="group relative block <?= $videoAspectClass ?> w-full touch-manipulation cursor-pointer overflow-hidden rounded-2xl bg-black text-left shadow-[0_12px_36px_rgba(0,0,0,0.35)] ring-1 ring-white/15 transition duration-300 hover:-translate-y-0.5 hover:ring-white/30 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-red-500/70">

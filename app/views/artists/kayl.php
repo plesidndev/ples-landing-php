@@ -9,14 +9,14 @@
 
         <div class="flex min-w-0 flex-col gap-[13px] md:min-h-screen md:pt-16">
             <section class="relative h-[134px] shrink-0">
-                <h1 class="sr-only"><?= e($site['name']) ?> — <?= e($site['release']) ?></h1>
-                <img src="/images/kayl/wordmark.png" alt="" width="900" height="450" decoding="async" class="absolute left-1/2 top-[-12px] h-[116px] w-[379px] -translate-x-1/2 object-cover">
+                <h1 class="absolute left-1/2 top-[-12px] h-[116px] w-[379px] -translate-x-1/2"><span class="sr-only"><?= e($site['name']) ?> — <?= e($site['release']) ?></span><img src="/images/kayl/wordmark.png" alt="" width="900" height="450" decoding="async" class="size-full object-cover"></h1>
                 <p class="absolute left-1/2 top-[105px] flex h-6 w-[157px] -translate-x-1/2 items-center justify-center rounded-full bg-[#d9d9d9]/20 font-display text-xs text-white"><?= e($site['tagline'][0]) ?></p>
             </section>
 
             <div><?php render('components/video', ['site' => $site]); ?></div>
 
             <section aria-label="Streaming links" class="flex flex-col gap-3 px-[18px]">
+                <h2 class="sr-only">Dengarkan <?= e($site['release']) ?> dari <?= e($site['name']) ?></h2>
                 <?php foreach ($site['platforms'] as $platform) render('components/dsp-card', ['site' => $site, 'platform' => $platform, 'variant' => 'glass', 'logoHeight' => $platform['id'] === 'tiktok' ? 28 : 26]); ?>
             </section>
 
