@@ -19,21 +19,21 @@
                 <div class="relative pt-[16px] text-center font-mono text-[15px] leading-[21px] text-white">
                     <p>OUT NOW!!<br>BRANKAS ft 6SENTANI</p>
                 </div>
-                <div class="relative mx-auto mt-[20px] flex w-[calc(100%-36px)] max-w-[365px] flex-col gap-[9px]">
-                    <?php foreach ($site['feature_platforms'] as $platform) render('components/dsp-card', ['site' => $site, 'platform' => $platform, 'variant' => 'callii', 'releaseLabel' => 'BRANKAS']); ?>
+                <div class="relative mx-auto mt-[20px] flex w-[calc(100%-36px)] max-w-[365px] flex-col gap-3">
+                    <?php foreach ($site['feature_platforms'] as $platform) render('components/dsp-card', ['site' => $site, 'platform' => $platform, 'releaseLabel' => 'BRANKAS']); ?>
                 </div>
             </section>
 
             <section aria-label="MULAI LAGI music video" class="mx-[25px] mt-[-7px] md:mt-0 md:mx-4">
                 <button type="button" data-video="<?= e($site['video']['id']) ?>" data-title="<?= e($site['video']['title']) ?>" aria-label="Play video: <?= e($site['video']['title']) ?>" class="group relative block aspect-video w-full cursor-pointer overflow-hidden rounded-[16px] bg-black text-left focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-red-500/70">
-                    <img src="https://i.ytimg.com/vi/<?= e($site['video']['id']) ?>/maxresdefault.jpg" alt="" loading="lazy" decoding="async" class="absolute inset-0 size-full object-cover">
+                    <img src="<?= e($site['video']['poster']) ?>" alt="" width="1280" height="720" loading="lazy" decoding="async" class="absolute inset-0 size-full object-cover">
                     <span class="absolute inset-0 flex items-center justify-center"><span class="flex h-[40px] w-[59px] items-center justify-center rounded-[10px] bg-[#ff0033] shadow-[0_4px_12px_rgba(0,0,0,0.3)] transition-transform group-hover:scale-110"><svg viewBox="0 0 24 24" aria-hidden="true" class="ml-1 size-7 fill-white"><path d="M9 6.5v11l9-5.5z"/></svg></span></span>
                 </button>
             </section>
 
-            <section aria-label="Listen to MULAI LAGI" class="flex flex-col gap-[9px] px-[18px] pb-4 md:mt-0">
+            <section aria-label="Listen to MULAI LAGI" class="flex flex-col gap-3 px-[18px] pb-4 md:mt-0">
                 <h2 class="sr-only">Listen to MULAI LAGI on streaming platforms</h2>
-                <?php foreach ($site['platforms'] as $platform) render('components/dsp-card', ['site' => $site, 'platform' => $platform, 'variant' => 'callii', 'releaseLabel' => 'MULAI LAGI']); ?>
+                <?php foreach ($site['platforms'] as $platform) render('components/dsp-card', ['site' => $site, 'platform' => $platform, 'releaseLabel' => 'MULAI LAGI']); ?>
             </section>
 
             <div class="md:mt-auto"><?php render('components/footer', ['site' => $site]); ?></div>

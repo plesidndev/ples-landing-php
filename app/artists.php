@@ -5,6 +5,7 @@ declare(strict_types=1);
 // Card order follows this list; an artist opts in per platform by supplying a link.
 $dspBrands = [
     'spotify' => ['name' => 'Spotify', 'icon' => '/images/dsp/spotify.svg', 'aspect' => 90.19 / 29.53],
+    'youtube' => ['name' => 'YouTube', 'icon' => '/images/dsp/youtube.svg', 'aspect' => 110 / 28],
     'apple-music' => ['name' => 'Apple Music', 'icon' => '/images/dsp/apple-music.png', 'aspect' => 920 / 221],
     'youtube-music' => ['name' => 'YouTube Music', 'icon' => '/images/dsp/youtube-music.svg', 'aspect' => 122 / 32],
     'tiktok' => ['name' => 'TikTok', 'icon' => '/images/dsp/tiktok.png', 'aspect' => 658 / 161],
@@ -87,18 +88,16 @@ $artists = [
     'callii' => $common + [
         'id' => 'callii', 'indexable' => true, 'crawlable' => true, 'view' => 'artists/callii', 'name' => 'CALLII', 'release' => 'BRANKAS ft 6SENTANI',
         'title' => 'CALLII — BRANKAS ft 6SENTANI | Ples+',
-        'description' => 'Dengarkan “BRANKAS” dari CALLII bersama 6SENTANI di Spotify, Apple Music, dan TikTok.',
+        'description' => 'Dengarkan “BRANKAS” dari CALLII bersama 6SENTANI di Spotify dan YouTube.',
         'default_url' => 'https://callii.plesconnect.app', 'theme_color' => '#000000',
         'og_image' => '/images/callii/brngakas-hero-1200.png', 'og_size' => [1200, 1200],
         'og_image_alt' => 'Illustrated CALLII and 6SENTANI BRANKAS artwork',
         'lcp_image_desktop' => '', 'lcp_image' => '/images/callii/brngakas-hero.png', 'genre' => 'Hip-Hop', 'artist_same_as' => [],
         'keywords' => ['CALLII', 'BRANKAS', '6SENTANI', 'MULAI LAGI', 'Ples+', 'musik Indonesia', 'lagu baru'],
         'tagline' => ['BARat!!!', 'BRANKAS ft 6SENTANI out now'],
-        // Direct BRANKAS track links are not available yet; these open each platform's search.
         'feature_platforms' => $platforms([
-            'spotify' => ['href' => 'https://open.spotify.com/search/BRANKAS%20CALLii', 'active' => true],
-            'apple-music' => ['href' => 'https://music.apple.com/id/search?term=BRANKAS%20CALLii', 'active' => true],
-            'tiktok' => ['href' => 'https://www.tiktok.com/search?q=BRANKAS%20CALLii', 'active' => true],
+            'spotify' => ['href' => 'https://open.spotify.com/track/7lUG77qQc1HUcNZsA0ykfw', 'active' => true],
+            'youtube' => ['href' => 'https://www.youtube.com/watch?v=4HOZc9w9twY', 'active' => true],
         ]),
         'platforms' => $platforms([
             'spotify' => ['href' => 'https://open.spotify.com/track/5hPbcmpqnRJafzAJv35dvE', 'active' => true],
@@ -106,7 +105,7 @@ $artists = [
             'tiktok' => ['href' => 'https://www.tiktok.com/music/MULAii-LLAGI-7660836886660040721', 'active' => true],
         ]),
         'extra_same_as' => ['https://www.instagram.com/reels/audio/886346697863290', 'https://www.youtube.com/watch?v=ZTLtF80nvf4'],
-        'video' => ['id' => 'ZTLtF80nvf4', 'title' => 'CALLII — MULAI LAGI', 'description' => 'Tonton video musik MULAI LAGI dari CALLII.', 'poster' => '/images/callii/photo-collage.jpg'],
+        'video' => ['id' => 'ZTLtF80nvf4', 'title' => 'CALLII — MULAI LAGI', 'description' => 'Tonton video musik MULAI LAGI dari CALLII.', 'poster' => '/images/callii/mulai-lagi-video-poster.jpg'],
     ],
     'maf' => $common + [
         'id' => 'maf', 'indexable' => true, 'crawlable' => true, 'view' => 'artists/maf', 'name' => 'MAF', 'release' => 'StarBoy',
@@ -154,10 +153,11 @@ $artists = [
     ],
 ];
 
-// sameAs is derived so it can never drift from the buttons: an inactive platform is
-// absent from both, and a changed URL only has to be edited in one place.
+// sameAs is derived from both featured and secondary buttons: an inactive platform
+// is absent from the page and schema, and each URL only needs editing in one place.
 foreach ($artists as $id => $artist) {
     $artists[$id]['same_as'] = array_values(array_unique(array_merge(
+        array_column($artist['feature_platforms'] ?? [], 'href'),
         array_column($artist['platforms'], 'href'),
         $artist['extra_same_as'],
     )));
