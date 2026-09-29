@@ -27,7 +27,7 @@
             <?php render('components/video-carousel', [
                 'videos' => [$site['feature_video'], $site['video']],
                 'label' => 'CALLII YouTube videos',
-                'className' => 'mt-[-7px] min-w-0 md:mt-0 md:shrink-0',
+                'className' => 'mt-[-7px] min-w-0 md:mx-auto md:mt-0 md:w-full md:max-w-[450px] md:shrink-0',
                 'trackPaddingClass' => 'px-[25px] md:px-4',
             ]); ?>
 
