@@ -34,7 +34,7 @@ if ($isArtist && !$isError) {
     if ($site['video']['id'] !== '') {
         $videoNode = [
             '@context' => 'https://schema.org', '@type' => 'VideoObject',
-            'name' => $site['video']['title'], 'description' => $site['description'],
+            'name' => $site['video']['title'], 'description' => $site['video']['description'] ?? $site['description'],
             'thumbnailUrl' => 'https://i.ytimg.com/vi/' . $site['video']['id'] . '/maxresdefault.jpg',
             'embedUrl' => 'https://www.youtube-nocookie.com/embed/' . $site['video']['id'],
             'contentUrl' => 'https://www.youtube.com/watch?v=' . $site['video']['id'],

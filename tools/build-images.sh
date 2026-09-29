@@ -26,6 +26,7 @@ lili/hero.jpg
 lili/bg-pattern.jpg
 callii/hero-swirl-bg.jpg
 callii/photo-collage.jpg
+callii/brngakas-hero.png
 maf/hero.png
 "
 
