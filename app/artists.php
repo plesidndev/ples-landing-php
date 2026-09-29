@@ -5,7 +5,6 @@ declare(strict_types=1);
 // Card order follows this list; an artist opts in per platform by supplying a link.
 $dspBrands = [
     'spotify' => ['name' => 'Spotify', 'icon' => '/images/dsp/spotify.svg', 'aspect' => 90.19 / 29.53],
-    'youtube' => ['name' => 'YouTube', 'icon' => '/images/dsp/youtube.svg', 'aspect' => 110 / 28],
     'apple-music' => ['name' => 'Apple Music', 'icon' => '/images/dsp/apple-music.png', 'aspect' => 920 / 221],
     'youtube-music' => ['name' => 'YouTube Music', 'icon' => '/images/dsp/youtube-music.svg', 'aspect' => 122 / 32],
     'tiktok' => ['name' => 'TikTok', 'icon' => '/images/dsp/tiktok.png', 'aspect' => 658 / 161],
@@ -97,14 +96,13 @@ $artists = [
         'tagline' => ['BARat!!!', 'BRANKAS ft 6SENTANI out now'],
         'feature_platforms' => $platforms([
             'spotify' => ['href' => 'https://open.spotify.com/track/7lUG77qQc1HUcNZsA0ykfw', 'active' => true],
-            'youtube' => ['href' => 'https://www.youtube.com/watch?v=4HOZc9w9twY', 'active' => true],
         ]),
         'platforms' => $platforms([
             'spotify' => ['href' => 'https://open.spotify.com/track/5hPbcmpqnRJafzAJv35dvE', 'active' => true],
             'apple-music' => ['href' => 'https://music.apple.com/us/album/mulaii-llagi/6789538157', 'active' => true],
             'tiktok' => ['href' => 'https://www.tiktok.com/music/MULAii-LLAGI-7660836886660040721', 'active' => true],
         ]),
-        'extra_same_as' => ['https://www.instagram.com/reels/audio/886346697863290', 'https://www.youtube.com/watch?v=ZTLtF80nvf4'],
+        'extra_same_as' => ['https://www.instagram.com/reels/audio/886346697863290', 'https://www.youtube.com/watch?v=4HOZc9w9twY', 'https://www.youtube.com/watch?v=ZTLtF80nvf4'],
         'feature_video' => ['id' => '4HOZc9w9twY', 'title' => 'CALLII — BRANKAS ft 6SENTANI', 'description' => 'Dengarkan BRANKAS dari CALLII bersama 6SENTANI di YouTube.', 'poster' => '/images/callii/brankas-youtube-poster.jpg', 'poster_size' => [480, 360], 'thumbnail_url' => 'https://i.ytimg.com/vi/4HOZc9w9twY/hqdefault.jpg'],
         'video' => ['id' => 'ZTLtF80nvf4', 'title' => 'CALLII — MULAI LAGI', 'description' => 'Tonton video musik MULAI LAGI dari CALLII.', 'poster' => '/images/callii/mulai-lagi-video-poster.jpg'],
     ],
