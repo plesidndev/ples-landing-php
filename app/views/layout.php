@@ -31,17 +31,20 @@ if ($isArtist && !$isError) {
         'sameAs' => $site['same_as'],
     ];
 
-    if ($site['video']['id'] !== '') {
+    foreach (isset($site['feature_video']) ? [$site['feature_video'], $site['video']] : [$site['video']] as $video) {
+        if ($video['id'] === '') {
+            continue;
+        }
         $videoNode = [
             '@context' => 'https://schema.org', '@type' => 'VideoObject',
-            'name' => $site['video']['title'], 'description' => $site['video']['description'] ?? $site['description'],
-            'thumbnailUrl' => 'https://i.ytimg.com/vi/' . $site['video']['id'] . '/maxresdefault.jpg',
-            'embedUrl' => 'https://www.youtube-nocookie.com/embed/' . $site['video']['id'],
-            'contentUrl' => 'https://www.youtube.com/watch?v=' . $site['video']['id'],
+            'name' => $video['title'], 'description' => $video['description'] ?? $site['description'],
+            'thumbnailUrl' => $video['thumbnail_url'] ?? ('https://i.ytimg.com/vi/' . $video['id'] . '/maxresdefault.jpg'),
+            'embedUrl' => 'https://www.youtube-nocookie.com/embed/' . $video['id'],
+            'contentUrl' => 'https://www.youtube.com/watch?v=' . $video['id'],
         ];
         // Google needs uploadDate for video rich results; omitted until a real date is known.
-        if (($site['video']['upload_date'] ?? '') !== '') {
-            $videoNode['uploadDate'] = $site['video']['upload_date'];
+        if (($video['upload_date'] ?? '') !== '') {
+            $videoNode['uploadDate'] = $video['upload_date'];
         }
         $schema[] = $videoNode;
     }

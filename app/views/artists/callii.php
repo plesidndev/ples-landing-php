@@ -24,11 +24,26 @@
                 </div>
             </section>
 
-            <section aria-label="MULAI LAGI music video" class="mx-[25px] mt-[-7px] md:mt-0 md:mx-4">
-                <button type="button" data-video="<?= e($site['video']['id']) ?>" data-title="<?= e($site['video']['title']) ?>" aria-label="Play video: <?= e($site['video']['title']) ?>" class="group relative block aspect-video w-full cursor-pointer overflow-hidden rounded-[16px] bg-black text-left focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-red-500/70">
-                    <img src="<?= e($site['video']['poster']) ?>" alt="" width="1280" height="720" loading="lazy" decoding="async" class="absolute inset-0 size-full object-cover">
-                    <span class="absolute inset-0 flex items-center justify-center"><span class="flex h-[40px] w-[59px] items-center justify-center rounded-[10px] bg-[#ff0033] shadow-[0_4px_12px_rgba(0,0,0,0.3)] transition-transform group-hover:scale-110"><svg viewBox="0 0 24 24" aria-hidden="true" class="ml-1 size-7 fill-white"><path d="M9 6.5v11l9-5.5z"/></svg></span></span>
-                </button>
+            <section aria-label="CALLII YouTube videos" data-video-carousel class="mt-[-7px] min-w-0 md:mt-0">
+                <h2 class="sr-only">CALLII on YouTube</h2>
+                <div data-carousel-track tabindex="0" role="group" aria-roledescription="carousel" aria-label="Swipe or use the arrow keys to choose a CALLII video" class="video-carousel-track relative flex snap-x snap-mandatory gap-3 overflow-x-auto px-[25px] md:px-4">
+                    <?php foreach ([$site['feature_video'], $site['video']] as $index => $video): ?>
+                        <div data-carousel-slide role="group" aria-roledescription="slide" aria-label="<?= ($index + 1) ?> of 2: <?= e($video['title']) ?>" class="w-full shrink-0 snap-center">
+                            <button type="button" data-video="<?= e($video['id']) ?>" data-title="<?= e($video['title']) ?>" aria-label="Play <?= e($video['title']) ?> on YouTube" class="group relative block aspect-video w-full cursor-pointer overflow-hidden rounded-[16px] bg-black text-left focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-red-500/70">
+                                <img src="<?= e($video['poster']) ?>" alt="" width="<?= (int) ($video['poster_size'][0] ?? 1280) ?>" height="<?= (int) ($video['poster_size'][1] ?? 720) ?>" loading="lazy" decoding="async" class="absolute inset-0 size-full object-cover">
+                                <span class="absolute inset-0 flex items-center justify-center"><span class="flex h-[40px] w-[59px] items-center justify-center rounded-[10px] bg-[#ff0033] shadow-[0_4px_12px_rgba(0,0,0,0.3)] transition-transform group-hover:scale-110"><svg viewBox="0 0 24 24" aria-hidden="true" class="ml-1 size-7 fill-white"><path d="M9 6.5v11l9-5.5z"/></svg></span></span>
+                            </button>
+                        </div>
+                    <?php endforeach; ?>
+                </div>
+                <div class="mt-2 flex items-center justify-center gap-4" aria-label="Video carousel controls">
+                    <button type="button" data-carousel-previous aria-label="Previous video" disabled class="flex size-8 items-center justify-center rounded-full bg-white/15 text-white transition hover:bg-white/25 disabled:cursor-not-allowed disabled:opacity-40">&#8592;</button>
+                    <div class="flex items-center gap-2">
+                        <button type="button" data-carousel-go="0" aria-label="Show BRANKAS video" aria-current="true" class="size-2.5 rounded-full bg-white transition-opacity"></button>
+                        <button type="button" data-carousel-go="1" aria-label="Show MULAI LAGI video" class="size-2.5 rounded-full bg-white opacity-40 transition-opacity"></button>
+                    </div>
+                    <button type="button" data-carousel-next aria-label="Next video" class="flex size-8 items-center justify-center rounded-full bg-white/15 text-white transition hover:bg-white/25 disabled:cursor-not-allowed disabled:opacity-40">&#8594;</button>
+                </div>
             </section>
 
             <section aria-label="Listen to MULAI LAGI" class="flex flex-col gap-3 px-[18px] pb-4 md:mt-0">

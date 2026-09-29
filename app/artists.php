@@ -105,6 +105,7 @@ $artists = [
             'tiktok' => ['href' => 'https://www.tiktok.com/music/MULAii-LLAGI-7660836886660040721', 'active' => true],
         ]),
         'extra_same_as' => ['https://www.instagram.com/reels/audio/886346697863290', 'https://www.youtube.com/watch?v=ZTLtF80nvf4'],
+        'feature_video' => ['id' => '4HOZc9w9twY', 'title' => 'CALLII — BRANKAS ft 6SENTANI', 'description' => 'Dengarkan BRANKAS dari CALLII bersama 6SENTANI di YouTube.', 'poster' => '/images/callii/brankas-youtube-poster.jpg', 'poster_size' => [480, 360], 'thumbnail_url' => 'https://i.ytimg.com/vi/4HOZc9w9twY/hqdefault.jpg'],
         'video' => ['id' => 'ZTLtF80nvf4', 'title' => 'CALLII — MULAI LAGI', 'description' => 'Tonton video musik MULAI LAGI dari CALLII.', 'poster' => '/images/callii/mulai-lagi-video-poster.jpg'],
     ],
     'maf' => $common + [
