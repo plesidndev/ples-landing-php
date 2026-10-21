@@ -85,19 +85,25 @@ document.querySelectorAll('[data-photo-carousel]').forEach((carousel) => {
   const slides = [...carousel.querySelectorAll('[data-photo-slide]')];
   const dots = [...carousel.querySelectorAll('[data-photo-go]')];
   const status = carousel.querySelector('[data-photo-status]');
+  if (!stage || slides.length === 0) return;
   let active = 0;
   let touchStart = null;
   const show = (index) => {
-    active = (index + slides.length) % slides.length;
-    slides.forEach((slide, i) => { slide.dataset.position = (i - active + slides.length) % slides.length; });
+    active = ((index % slides.length) + slides.length) % slides.length;
+    slides.forEach((slide, i) => {
+      let offset = (i - active + slides.length) % slides.length;
+      if (offset > slides.length / 2) offset -= slides.length;
+      slide.dataset.position = Math.abs(offset) > 2 ? 'hidden' : (offset < 0 ? 5 + offset : offset);
+      slide.setAttribute('aria-hidden', i === active ? 'false' : 'true');
+    });
     dots.forEach((dot, i) => {
       if (i === active) dot.setAttribute('aria-current', 'true');
       else dot.removeAttribute('aria-current');
     });
     status.textContent = `Photo ${active + 1} of ${slides.length}`;
   };
-  carousel.querySelector('[data-photo-previous]').addEventListener('click', () => show(active - 1));
-  carousel.querySelector('[data-photo-next]').addEventListener('click', () => show(active + 1));
+  carousel.querySelector('[data-photo-previous]')?.addEventListener('click', () => show(active - 1));
+  carousel.querySelector('[data-photo-next]')?.addEventListener('click', () => show(active + 1));
   dots.forEach((dot, i) => dot.addEventListener('click', () => show(i)));
   stage.addEventListener('keydown', (event) => {
     if (!['ArrowLeft', 'ArrowRight'].includes(event.key)) return;

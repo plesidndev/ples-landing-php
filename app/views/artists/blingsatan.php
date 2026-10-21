@@ -24,23 +24,11 @@
                     <?php foreach ($site['channel_platforms'] as $platform) render('components/dsp-card', ['site' => $site, 'platform' => $platform, 'variant' => 'glass', 'logoHeight' => 27, 'releaseLabel' => 'music']); ?>
                 </div>
             </section>
-            <section data-photo-carousel aria-label="BLINGSATAN photo gallery" aria-roledescription="carousel" class="blingsatan-gallery">
-                <div data-photo-stage class="blingsatan-photo-stage" tabindex="0" aria-label="Use the arrow keys to browse band photos">
-                    <?php foreach ([2, 4, 5, 3, 1] as $index => $photo): ?>
-                        <img data-photo-slide data-position="<?= $index ?>" src="/images/blingsatan/photo-<?= $photo ?>.png" alt="BLINGSATAN band photo <?= $photo ?>" width="<?= $photo === 2 ? 288 : (in_array($photo, [1, 4]) ? 264 : 240) ?>" height="<?= $photo === 2 ? 288 : (in_array($photo, [1, 4]) ? 252 : 228) ?>" loading="lazy" decoding="async">
-                    <?php endforeach; ?>
-                </div>
-                <div class="blingsatan-photo-controls">
-                    <button type="button" data-photo-previous aria-label="Previous photo">&#8592;</button>
-                    <div class="flex items-center gap-[7px]">
-                        <?php for ($i = 0; $i < 5; $i++): ?>
-                            <button type="button" data-photo-go="<?= $i ?>" aria-label="Show band photo <?= $i + 1 ?>" <?= $i === 0 ? 'aria-current="true"' : '' ?>></button>
-                        <?php endfor; ?>
-                    </div>
-                    <button type="button" data-photo-next aria-label="Next photo">&#8594;</button>
-                </div>
-                <p data-photo-status class="sr-only" aria-live="polite">Photo 1 of 5</p>
-            </section>
+            <?php render('components/photo-carousel', [
+                'photos' => $site['photos'],
+                'label' => 'BLINGSATAN photo gallery',
+                'className' => 'blingsatan-gallery',
+            ]); ?>
             <?php render('components/footer', ['site' => $site]); ?>
         </div>
     </div>

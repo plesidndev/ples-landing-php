@@ -29,6 +29,22 @@ ARTIST_ID=lili php -S localhost:8080 -t public
 
 Use `callii`, `devadata`, `blingsatan`, `kayl`, `maf`, `lili`, or `default` for `ARTIST_ID`. Environment variables take precedence over `app/environment.php`; the file is ignored by Git.
 
+## Photo carousel
+
+Render `components/photo-carousel` with `photos`, an optional accessible `label`, and an optional `className` for page spacing:
+
+```php
+render('components/photo-carousel', [
+    'photos' => [
+        ['src' => '/images/artist/photo.jpg', 'alt' => 'Band portrait'],
+        ['src' => '/images/artist/side.png', 'centerSrc' => '/images/artist/original.jpg', 'alt' => 'Live performance'],
+    ],
+    'label' => 'Artist photo gallery',
+]);
+```
+
+The active photo is centered in an upright square frame; side cards tilt and shrink. Supply `centerSrc` when `src` already contains a perspective effect, using the original untransformed photo. Omitting it uses `src` in both positions and preserves any distortion baked into that image. Controls are generated from the photo count; empty galleries render nothing and single photos have no controls. Each carousel supports arrow keys and swiping independently.
+
 The compiled CSS is committed intentionally, so production only needs PHP. Run `npm run build` and commit `public/assets/app.css` after changing templates or Tailwind styles.
 
 ## hPanel layout

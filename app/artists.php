@@ -89,6 +89,12 @@ $artists = [
         'extra_same_as' => [],
         'video' => ['id' => '', 'href' => 'https://www.youtube.com/results?search_query=Blingsatan+Petaruh', 'title' => 'BLINGSATAN — Petaruh', 'poster' => '/images/blingsatan/release-video.jpg'],
         'channel_video' => ['id' => '', 'href' => 'https://www.youtube.com/results?search_query=Blingsatan+Karna+Kita+Hidup+Di+Dunia', 'title' => 'BLINGSATAN — Karna Kita Hidup Di Dunia', 'poster' => '/images/blingsatan/channel-video.jpg'],
+        'photos' => [
+            ['src' => '/images/blingsatan/photo-2.png', 'alt' => 'BLINGSATAN band photo 2'],
+            ['src' => '/images/blingsatan/photo-4.png', 'alt' => 'BLINGSATAN band photo 4'],
+            ['src' => '/images/blingsatan/photo-5.png', 'alt' => 'BLINGSATAN band photo 5'],
+            ['src' => '/images/blingsatan/photo-1.png', 'alt' => 'BLINGSATAN band photo 1'],
+        ],
     ],
     'kayl' => $common + [
         'id' => 'kayl', 'indexable' => true, 'crawlable' => true, 'view' => 'artists/kayl', 'name' => 'KAYL', 'release' => 'dar der D0R!!',
