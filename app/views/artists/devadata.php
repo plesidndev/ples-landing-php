@@ -24,6 +24,12 @@
                 <?php foreach ($site['platforms'] as $platform) render('components/dsp-card', compact('site', 'platform')); ?>
             </section>
 
+            <?php render('components/photo-carousel', [
+                'photos' => $site['photos'],
+                'label' => 'DEVADATA photo gallery',
+                'className' => 'mx-auto w-full max-w-[402px] pb-[31px] md:shrink-0',
+            ]); ?>
+
             <div class="md:mt-auto md:shrink-0"><?php render('components/footer', ['site' => $site]); ?></div>
         </div>
     </div>

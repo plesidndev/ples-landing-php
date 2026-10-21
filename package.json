@@ -4,10 +4,15 @@
   "private": true,
   "scripts": {
     "dev": "tailwindcss -i resources/css/app.css -o public/assets/app.css --watch",
-    "build": "tailwindcss -i resources/css/app.css -o public/assets/app.css --minify"
+    "build": "tailwindcss -i resources/css/app.css -o public/assets/app.css --minify",
+    "prebuild": "node tools/copy-swiper.mjs",
+    "predev": "node tools/copy-swiper.mjs"
   },
   "devDependencies": {
     "@tailwindcss/cli": "^4.1.12",
     "tailwindcss": "^4.1.12"
+  },
+  "dependencies": {
+    "swiper": "12.2.0"
   }
 }

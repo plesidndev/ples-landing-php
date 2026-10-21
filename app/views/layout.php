@@ -62,6 +62,10 @@ if ($isArtist && !$isError) {
     <link rel="canonical" href="<?= e($site['url']) ?>">
     <link rel="icon" href="/icon.svg" type="image/svg+xml">
     <link rel="manifest" href="/manifest.webmanifest">
+    <?php $hasPhotoCarousel = str_contains($content, 'data-photo-carousel'); ?>
+    <?php if ($hasPhotoCarousel): ?>
+        <link rel="stylesheet" href="<?= e(asset_url('/assets/vendor/swiper/swiper-bundle.min.css')) ?>">
+    <?php endif; ?>
     <?php $css = inline_css(); ?>
     <?php if ($css !== ''): ?>
         <style><?= $css ?></style>
@@ -97,6 +101,9 @@ if ($isArtist && !$isError) {
     <meta name="twitter:image:alt" content="<?= e($site['og_image_alt']) ?>">
     <?php if ($environment['google_site_verification'] !== ''): ?>
         <meta name="google-site-verification" content="<?= e($environment['google_site_verification']) ?>">
+    <?php endif; ?>
+    <?php if ($hasPhotoCarousel): ?>
+        <script src="<?= e(asset_url('/assets/vendor/swiper/swiper-bundle.min.js')) ?>" defer></script>
     <?php endif; ?>
     <script src="<?= e(asset_url('/assets/app.js')) ?>" defer></script>
     <?php foreach ($schema as $node): ?>

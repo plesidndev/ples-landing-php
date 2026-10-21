@@ -43,7 +43,9 @@ render('components/photo-carousel', [
 ]);
 ```
 
-The active photo is centered in an upright square frame; side cards tilt and shrink. Supply `centerSrc` when `src` already contains a perspective effect, using the original untransformed photo. Alternatively, `centerTransform` accepts an asset-specific inverse CSS perspective matrix calibrated for the 144px active card. This correction only applies to the active image and is ignored when `centerSrc` is provided. Controls are generated from the photo count; empty galleries render nothing and single photos have no controls. Each carousel supports arrow keys and swiping independently.
+The carousel uses a locally hosted Swiper 12 bundle with `effect: 'coverflow'`. The active photo stays centered and upright while side cards rotate in 3D. Supply `centerSrc` for an original untransformed image, or `centerTransform` for an inverse CSS perspective matrix calibrated for the 144px card. The correction applies to every card before Swiper adds its coverflow effect; `centerSrc` takes precedence. Controls follow the photo count, with swipe, scoped arrow keys and continuous looping for two or more photos. Small galleries repeat their slides to keep both sides filled, while dots and announcements still use the original photo count; empty galleries render nothing and single photos have no controls.
+
+`npm run build` and `npm run dev` copy Swiper JS, CSS and its license into `public/assets/vendor/swiper/`. Commit these files with the compiled CSS so production only needs PHP. Swiper loads only on pages containing a photo carousel.
 
 The compiled CSS is committed intentionally, so production only needs PHP. Run `npm run build` and commit `public/assets/app.css` after changing templates or Tailwind styles.
 

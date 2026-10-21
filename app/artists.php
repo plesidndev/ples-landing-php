@@ -64,6 +64,14 @@ $artists = [
         ]),
         'extra_same_as' => ['https://www.youtube.com/watch?v=k0Zc--bj2vc'],
         'video' => ['id' => 'k0Zc--bj2vc', 'href' => 'https://www.youtube.com/watch?v=k0Zc--bj2vc&list=RDk0Zc--bj2vc&start_radio=1', 'title' => 'DEVADATA — SAPUTANAH PAPUA', 'poster' => '/images/devadata/hero.jpg'],
+        // Figma 192:1544: start with the center card, then continue clockwise.
+        'photos' => [
+            ['src' => '/images/devadata/photo-2.png', 'alt' => 'DEVADATA band photo 2'],
+            ['src' => '/images/devadata/photo-4.png', 'alt' => 'DEVADATA band photo 4', 'centerTransform' => 'matrix3d(1.354167,.177083,0,.00245949,0,1.3125,0,0,0,0,1,0,0,-22.5,0,1)'],
+            ['src' => '/images/devadata/photo-5.png', 'alt' => 'DEVADATA band photo 5', 'centerTransform' => 'matrix3d(1.356322,.178161,0,.00247446,0,1.310345,0,0,0,0,1,0,0,-22.344828,0,1)'],
+            ['src' => '/images/devadata/photo-3.png', 'alt' => 'DEVADATA band photo 3', 'centerTransform' => 'matrix3d(.737288,-.131356,0,-.00182486,0,.966102,0,0,0,0,1,0,0,2.440678,0,1)'],
+            ['src' => '/images/devadata/photo-1.png', 'alt' => 'DEVADATA band photo 1', 'centerTransform' => 'matrix3d(.738462,-.130769,0,-.00181624,0,.969231,0,0,0,0,1,0,0,2.215385,0,1)'],
+        ],
     ],
     'blingsatan' => $common + [
         'id' => 'blingsatan', 'indexable' => true, 'crawlable' => true, 'view' => 'artists/blingsatan', 'name' => 'BLINGSATAN', 'release' => 'Petaruh',

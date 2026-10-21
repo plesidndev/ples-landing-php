@@ -79,42 +79,71 @@ if (header) {
   addEventListener("scroll", updateHeader, { passive: true });
 }
 
-// Layered photo carousel, with keyboard and swipe navigation.
+// Each reusable photo gallery owns its Swiper instance and controls.
 document.querySelectorAll('[data-photo-carousel]').forEach((carousel) => {
   const stage = carousel.querySelector('[data-photo-stage]');
   const slides = [...carousel.querySelectorAll('[data-photo-slide]')];
   const dots = [...carousel.querySelectorAll('[data-photo-go]')];
   const status = carousel.querySelector('[data-photo-status]');
-  if (!stage || slides.length === 0) return;
-  let active = 0;
-  let touchStart = null;
-  const show = (index) => {
-    active = ((index % slides.length) + slides.length) % slides.length;
+  if (!stage || slides.length === 0 || typeof Swiper === 'undefined') return;
+  const photoCount = Number(carousel.dataset.photoCount);
+
+  const update = (swiper) => {
+    const active = swiper.realIndex % photoCount;
     slides.forEach((slide, i) => {
-      let offset = (i - active + slides.length) % slides.length;
-      if (offset > slides.length / 2) offset -= slides.length;
-      slide.dataset.position = Math.abs(offset) > 2 ? 'hidden' : (offset < 0 ? 5 + offset : offset);
-      slide.setAttribute('aria-hidden', i === active ? 'false' : 'true');
+      slide.setAttribute('aria-hidden', i === swiper.realIndex ? 'false' : 'true');
+      slide.setAttribute('aria-label', `${i % photoCount + 1} of ${photoCount}`);
     });
     dots.forEach((dot, i) => {
       if (i === active) dot.setAttribute('aria-current', 'true');
       else dot.removeAttribute('aria-current');
     });
-    status.textContent = `Photo ${active + 1} of ${slides.length}`;
+    status.textContent = `Photo ${active + 1} of ${photoCount}`;
   };
-  carousel.querySelector('[data-photo-previous]')?.addEventListener('click', () => show(active - 1));
-  carousel.querySelector('[data-photo-next]')?.addEventListener('click', () => show(active + 1));
-  dots.forEach((dot, i) => dot.addEventListener('click', () => show(i)));
+  const loop = photoCount > 1;
+  const swiper = new Swiper(stage, {
+    effect: 'coverflow',
+    centeredSlides: true,
+    slidesPerView: 'auto',
+    loop,
+    speed: matchMedia('(prefers-reduced-motion: reduce)').matches ? 0 : 350,
+    grabCursor: slides.length > 1,
+    allowTouchMove: slides.length > 1,
+    slideToClickedSlide: true,
+    coverflowEffect: {
+      rotate: 35,
+      stretch: 50,
+      depth: 100,
+      scale: 0.9,
+      modifier: 1,
+      slideShadows: false,
+    },
+    navigation: {
+      prevEl: carousel.querySelector('[data-photo-previous]'),
+      nextEl: carousel.querySelector('[data-photo-next]'),
+    },
+    a11y: {
+      enabled: true,
+      containerMessage: carousel.getAttribute('aria-label'),
+      prevSlideMessage: 'Previous photo',
+      nextSlideMessage: 'Next photo',
+    },
+    on: { init: update, afterInit: update, slideChange: update },
+  });
+  dots.forEach((dot, index) => dot.addEventListener('click', () => {
+    if (loop) {
+      // Select the nearest repeated copy of this photo around the loop.
+      let delta = index - (swiper.realIndex % photoCount);
+      if (delta > photoCount / 2) delta -= photoCount;
+      if (delta < -photoCount / 2) delta += photoCount;
+      const target = (swiper.realIndex + delta + slides.length) % slides.length;
+      swiper.slideToLoop(target);
+    } else swiper.slideTo(index);
+  }));
   stage.addEventListener('keydown', (event) => {
     if (!['ArrowLeft', 'ArrowRight'].includes(event.key)) return;
     event.preventDefault();
-    show(active + (event.key === 'ArrowRight' ? 1 : -1));
+    if (event.key === 'ArrowRight') swiper.slideNext();
+    else swiper.slidePrev();
   });
-  stage.addEventListener('touchstart', (event) => { touchStart = event.changedTouches[0].clientX; }, { passive: true });
-  stage.addEventListener('touchend', (event) => {
-    if (touchStart === null) return;
-    const delta = event.changedTouches[0].clientX - touchStart;
-    if (Math.abs(delta) > 30) show(active + (delta < 0 ? 1 : -1));
-    touchStart = null;
-  }, { passive: true });
 });

@@ -52,19 +52,11 @@ body { min-height: 100%; background: var(--background); color: var(--foreground)
 .blingsatan-channel .blingsatan-video { margin-top: 13px; }
 .blingsatan-channel .blingsatan-links { margin-top: 13px; }
 .blingsatan-gallery { margin-top: 13px; padding-bottom: 31px; }
-/* Shared layered photo carousel. The active card always faces forward. */
-.photo-carousel-stage { position: relative; height: 152px; overflow: hidden; touch-action: pan-y; }
-.photo-carousel-slide { position: absolute; left: 50%; top: 0; width: 144px; height: 144px; overflow: hidden; border-radius: 20px; transition: transform .35s ease, filter .35s ease, opacity .35s ease; }
-.photo-carousel-slide img { width: 100%; height: 100%; object-fit: cover; object-position: center; }
-.photo-carousel-slide [data-photo-center] { display: none; }
-.photo-carousel-slide[data-position="0"] { z-index: 5; transform: translateX(-50%) rotate(0deg); filter: none; }
-.photo-carousel-slide[data-position="0"] [data-photo-center] { display: block; }
-.photo-carousel-slide[data-position="0"] [data-photo-side] { display: none; }
-.photo-carousel-slide[data-position="1"] { z-index: 3; transform: translateX(calc(-50% + 81px)) scale(.917) rotate(6deg); filter: brightness(.85); }
-.photo-carousel-slide[data-position="2"] { z-index: 1; transform: translateX(calc(-50% + 135px)) scale(.833) rotate(10deg); filter: brightness(.65); }
-.photo-carousel-slide[data-position="3"] { z-index: 1; transform: translateX(calc(-50% - 135px)) scale(.833) rotate(-10deg); filter: brightness(.65); }
-.photo-carousel-slide[data-position="4"] { z-index: 3; transform: translateX(calc(-50% - 81px)) scale(.917) rotate(-6deg); filter: brightness(.85); }
-.photo-carousel-slide[data-position="hidden"] { opacity: 0; pointer-events: none; transform: translateX(-50%) scale(.75); }
+/* Swiper controls the coverflow transforms; images stay upright within each card. */
+.photo-carousel-stage.swiper { position: relative; max-width: 402px; height: 152px; overflow: hidden; touch-action: pan-y; }
+.photo-carousel-slide.swiper-slide { width: 144px; height: 144px; }
+.photo-carousel-image { width: 144px; height: 144px; overflow: hidden; border-radius: 20px; }
+.photo-carousel-image img { display: block; width: 100%; height: 100%; object-fit: cover; object-position: center; }
 .photo-carousel-controls { display: flex; justify-content: space-between; align-items: center; gap: 12px; max-width: 100%; width: max-content; min-width: 190px; margin: 20px auto 0; }
 .photo-carousel-controls > button { width: 36px; height: 36px; flex-shrink: 0; cursor: pointer; }
 .photo-carousel-dots { display: flex; justify-content: center; flex-wrap: wrap; gap: 7px; }
@@ -72,7 +64,7 @@ body { min-height: 100%; background: var(--background); color: var(--foreground)
 .photo-carousel-controls [aria-current] { width: 11px; background: white; }
 .photo-carousel :is(button, [tabindex]):focus-visible,
 .blingsatan :is(a, button, [tabindex]):focus-visible { outline: 2px solid currentColor; outline-offset: 4px; }
-@media (prefers-reduced-motion: reduce) { .photo-carousel-slide { transition: none; } }
+@media (prefers-reduced-motion: reduce) { .photo-carousel .swiper-wrapper, .photo-carousel .swiper-slide { transition-duration: 0ms !important; } }
 @media (min-width: 768px) {
   .blingsatan { height: 100vh; }
   .blingsatan-layout { display: grid; height: 100vh; grid-template-columns: 1fr 1fr; grid-template-rows: minmax(0, 1fr); align-items: start; }
