@@ -27,3 +27,53 @@ body { min-height: 100%; background: var(--background); color: var(--foreground)
 
 .video-carousel-track { scrollbar-width: none; }
 .video-carousel-track::-webkit-scrollbar { display: none; }
+
+/* Blingsatan follows CALLII's independently scrolling desktop content panel. */
+.blingsatan { background: #030923; }
+.blingsatan-background { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; filter: brightness(.68); pointer-events: none; }
+.blingsatan-portrait { position: relative; aspect-ratio: 402 / 292; }
+.blingsatan-hero { position: absolute; top: 0; width: 100%; height: 183.66%; object-fit: cover; }
+.blingsatan-portrait > picture { position: absolute; inset: 0; overflow: hidden; }
+.blingsatan-portrait > .blingsatan-hero { height: 100%; object-position: center top; }
+.blingsatan-logo { position: absolute; width: 71.64%; height: auto; left: 14.18%; bottom: -66px; z-index: 1; }
+.blingsatan-content { padding-top: 86px; }
+.blingsatan-release { position: relative; height: 363px; }
+.blingsatan-out-now { position: absolute; inset: 0 0 auto; text-align: center; font-size: 32px; line-height: 40px; font-weight: 700; }
+.blingsatan-mask { position: absolute; width: 295px; height: 295px; left: 50%; top: 83px; transform: translateX(-50%); }
+.blingsatan-release-title { position: absolute; width: 391px; max-width: 100%; height: 159px; top: 24px; left: calc(50% + 13.5px); transform: translateX(-50%); overflow: hidden; }
+.blingsatan-release-title img { width: 100%; height: auto; max-width: none; }
+.blingsatan-video { margin: 0 25px; }
+.blingsatan-links { display: flex; flex-direction: column; gap: 12px; padding: 0 18px; margin-top: 19px; }
+.blingsatan-links > div { border: 1px solid rgb(255 255 255 / .45); background: rgb(217 217 217 / .2); }
+.blingsatan-links a { font-size: 12px; padding: 7px 14px; min-height: 32px; }
+.blingsatan-links > div:first-child { padding-left: 18px; }
+.blingsatan-links > div:first-child img { height: 34px !important; width: 113px !important; }
+.blingsatan-channel { margin-top: 28px; }
+.blingsatan-channel .blingsatan-video { margin-top: 13px; }
+.blingsatan-channel .blingsatan-links { margin-top: 13px; }
+.blingsatan-gallery { margin-top: 13px; padding-bottom: 31px; }
+.blingsatan-photo-stage { position: relative; height: 152px; overflow: hidden; }
+.blingsatan-photo-stage img { position: absolute; left: 50%; top: 0; width: 144px; height: 144px; object-fit: contain; transition: transform .35s ease, filter .35s ease; }
+.blingsatan-photo-stage [data-position="0"] { z-index: 5; transform: translateX(-50%); }
+.blingsatan-photo-stage [data-position="1"] { z-index: 3; transform: translateX(calc(-50% + 81px)) scale(.917); filter: brightness(.85); }
+.blingsatan-photo-stage [data-position="2"] { z-index: 1; transform: translateX(calc(-50% + 135px)) scale(.833); filter: brightness(.65); }
+.blingsatan-photo-stage [data-position="3"] { z-index: 1; transform: translateX(calc(-50% - 135px)) scale(.833); filter: brightness(.65); }
+.blingsatan-photo-stage [data-position="4"] { z-index: 3; transform: translateX(calc(-50% - 81px)) scale(.917); filter: brightness(.85); }
+.blingsatan-photo-controls { display: flex; justify-content: space-between; align-items: center; width: 190px; margin: 20px auto 0; }
+.blingsatan-photo-controls > button { width: 36px; height: 36px; cursor: pointer; }
+.blingsatan-photo-controls [data-photo-go] { width: 8px; height: 8px; border-radius: 20px; background: #585858; cursor: pointer; }
+.blingsatan-photo-controls [aria-current] { width: 11px; background: white; }
+.blingsatan :is(a, button, [tabindex]):focus-visible { outline: 2px solid white; outline-offset: 4px; }
+@media (prefers-reduced-motion: reduce) { .blingsatan-photo-stage img { transition: none; } }
+@media (min-width: 768px) {
+  .blingsatan { height: 100vh; }
+  .blingsatan-layout { display: grid; height: 100vh; grid-template-columns: 1fr 1fr; grid-template-rows: minmax(0, 1fr); align-items: start; }
+  .blingsatan-portrait { height: 100%; aspect-ratio: auto; overflow: hidden; }
+  .blingsatan-hero { height: 100%; object-position: center; }
+  .blingsatan-logo { bottom: 40px; }
+  .blingsatan-content { height: 100%; min-height: 0; min-width: 0; overflow-y: auto; overscroll-behavior: contain; padding-top: 76px; }
+  .blingsatan-release { max-width: 429px; width: 100%; margin-inline: auto; }
+  .blingsatan-video { max-width: 384px; margin-inline: auto; width: calc(100% - 50px); }
+  .blingsatan-links { max-width: 438px; width: 100%; margin-inline: auto; }
+  .blingsatan-gallery { max-width: 402px; margin-inline: auto; }
+}

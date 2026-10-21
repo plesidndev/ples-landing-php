@@ -78,3 +78,37 @@ if (header) {
   updateHeader();
   addEventListener("scroll", updateHeader, { passive: true });
 }
+
+// Layered photo carousel, with keyboard and swipe navigation.
+document.querySelectorAll('[data-photo-carousel]').forEach((carousel) => {
+  const stage = carousel.querySelector('[data-photo-stage]');
+  const slides = [...carousel.querySelectorAll('[data-photo-slide]')];
+  const dots = [...carousel.querySelectorAll('[data-photo-go]')];
+  const status = carousel.querySelector('[data-photo-status]');
+  let active = 0;
+  let touchStart = null;
+  const show = (index) => {
+    active = (index + slides.length) % slides.length;
+    slides.forEach((slide, i) => { slide.dataset.position = (i - active + slides.length) % slides.length; });
+    dots.forEach((dot, i) => {
+      if (i === active) dot.setAttribute('aria-current', 'true');
+      else dot.removeAttribute('aria-current');
+    });
+    status.textContent = `Photo ${active + 1} of ${slides.length}`;
+  };
+  carousel.querySelector('[data-photo-previous]').addEventListener('click', () => show(active - 1));
+  carousel.querySelector('[data-photo-next]').addEventListener('click', () => show(active + 1));
+  dots.forEach((dot, i) => dot.addEventListener('click', () => show(i)));
+  stage.addEventListener('keydown', (event) => {
+    if (!['ArrowLeft', 'ArrowRight'].includes(event.key)) return;
+    event.preventDefault();
+    show(active + (event.key === 'ArrowRight' ? 1 : -1));
+  });
+  stage.addEventListener('touchstart', (event) => { touchStart = event.changedTouches[0].clientX; }, { passive: true });
+  stage.addEventListener('touchend', (event) => {
+    if (touchStart === null) return;
+    const delta = event.changedTouches[0].clientX - touchStart;
+    if (Math.abs(delta) > 30) show(active + (delta < 0 ? 1 : -1));
+    touchStart = null;
+  }, { passive: true });
+});

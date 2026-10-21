@@ -65,6 +65,31 @@ $artists = [
         'extra_same_as' => ['https://www.youtube.com/watch?v=k0Zc--bj2vc'],
         'video' => ['id' => 'k0Zc--bj2vc', 'href' => 'https://www.youtube.com/watch?v=k0Zc--bj2vc&list=RDk0Zc--bj2vc&start_radio=1', 'title' => 'DEVADATA — SAPUTANAH PAPUA', 'poster' => '/images/devadata/hero.jpg'],
     ],
+    'blingsatan' => $common + [
+        'id' => 'blingsatan', 'indexable' => true, 'crawlable' => true, 'view' => 'artists/blingsatan', 'name' => 'BLINGSATAN', 'release' => 'Petaruh',
+        'title' => 'BLINGSATAN — Petaruh | Ples+',
+        'description' => 'Dengarkan “Petaruh” dari BLINGSATAN dan temukan video serta musik lainnya di sini.',
+        'default_url' => 'https://blingsatan.plesconnect.app', 'theme_color' => '#030923',
+        'og_image' => '/images/blingsatan/hero-1200.png', 'og_size' => [1200, 1601],
+        'og_image_alt' => 'BLINGSATAN band portrait',
+        'lcp_image_desktop' => '/images/blingsatan/hero.png', 'lcp_image' => '/images/blingsatan/hero.png',
+        'genre' => 'Rock', 'artist_same_as' => ['https://music.apple.com/us/artist/blingsatan/1429060178'],
+        'keywords' => ['BLINGSATAN', 'Petaruh', 'Ples+', 'musik Indonesia', 'lagu baru'], 'tagline' => ['OUT NOW!!', 'Petaruh'],
+        // Temporary destinations approved by the user; replace with artist-supplied links.
+        'platforms' => $platforms([
+            'spotify' => ['href' => 'https://open.spotify.com/search/Blingsatan%20Petaruh', 'active' => true],
+            'apple-music' => ['href' => 'https://music.apple.com/us/album/petaruh-single/1895953767', 'active' => true],
+            'tiktok' => ['href' => 'https://www.tiktok.com/search?q=Blingsatan%20Petaruh', 'active' => true],
+        ]),
+        'channel_platforms' => $platforms([
+            'spotify' => ['href' => 'https://open.spotify.com/search/Blingsatan', 'active' => true],
+            'apple-music' => ['href' => 'https://music.apple.com/us/artist/blingsatan/1429060178', 'active' => true],
+            'tiktok' => ['href' => 'https://www.tiktok.com/search?q=Blingsatan', 'active' => true],
+        ]),
+        'extra_same_as' => [],
+        'video' => ['id' => '', 'href' => 'https://www.youtube.com/results?search_query=Blingsatan+Petaruh', 'title' => 'BLINGSATAN — Petaruh', 'poster' => '/images/blingsatan/release-video.jpg'],
+        'channel_video' => ['id' => '', 'href' => 'https://www.youtube.com/results?search_query=Blingsatan+Karna+Kita+Hidup+Di+Dunia', 'title' => 'BLINGSATAN — Karna Kita Hidup Di Dunia', 'poster' => '/images/blingsatan/channel-video.jpg'],
+    ],
     'kayl' => $common + [
         'id' => 'kayl', 'indexable' => true, 'crawlable' => true, 'view' => 'artists/kayl', 'name' => 'KAYL', 'release' => 'dar der D0R!!',
         'title' => 'KAYL — dar der D0R!! | Ples+',
@@ -141,7 +166,7 @@ $artists = [
     'default' => $common + [
         'id' => 'default', 'indexable' => false, 'crawlable' => true, 'view' => 'artists/default', 'name' => 'Ples+ Connect', 'release' => '',
         'title' => 'Ples+ Connect — Make Your Own Core',
-        'description' => 'Dengarkan rilis terbaru dari DEVADATA, KAYL, CALLII, MAF, dan LiLi di Spotify, Apple Music, YouTube Music, dan TikTok.',
+        'description' => 'Dengarkan rilis terbaru dari DEVADATA, BLINGSATAN, KAYL, CALLII, MAF, dan LiLi di Spotify, Apple Music, YouTube Music, dan TikTok.',
         'default_url' => 'https://plesconnect.app',
         // Dedicated card: the logo PNG is white-on-transparent, which social scrapers
         // flatten to white and render as a blank image.

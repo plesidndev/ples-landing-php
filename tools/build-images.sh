@@ -17,6 +17,10 @@ done
 
 # Sources that are rendered at layout scale and therefore need size variants.
 SOURCES="
+blingsatan/hero.png
+blingsatan/background.png
+blingsatan/petaruh-artwork.png
+blingsatan/petaruh-wordmark.png
 devadata/artwork.png
 devadata/hero.jpg
 devadata/devabackgr.jpg
