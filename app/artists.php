@@ -91,9 +91,10 @@ $artists = [
         'channel_video' => ['id' => '', 'href' => 'https://www.youtube.com/results?search_query=Blingsatan+Karna+Kita+Hidup+Di+Dunia', 'title' => 'BLINGSATAN — Karna Kita Hidup Di Dunia', 'poster' => '/images/blingsatan/channel-video.jpg'],
         'photos' => [
             ['src' => '/images/blingsatan/photo-2.png', 'alt' => 'BLINGSATAN band photo 2'],
-            ['src' => '/images/blingsatan/photo-4.png', 'alt' => 'BLINGSATAN band photo 4'],
-            ['src' => '/images/blingsatan/photo-5.png', 'alt' => 'BLINGSATAN band photo 5'],
-            ['src' => '/images/blingsatan/photo-1.png', 'alt' => 'BLINGSATAN band photo 1'],
+            // Inverse perspective restores the baked trapezoid to a square for the active card.
+            ['src' => '/images/blingsatan/photo-4.png', 'alt' => 'BLINGSATAN band photo 4', 'centerTransform' => 'matrix3d(1.354167,.177083,0,.00245949,0,1.3125,0,0,0,0,1,0,0,-22.5,0,1)'],
+            ['src' => '/images/blingsatan/photo-5.png', 'alt' => 'BLINGSATAN band photo 5', 'centerTransform' => 'matrix3d(1.356322,.178161,0,.00247446,0,1.310345,0,0,0,0,1,0,0,-22.344828,0,1)'],
+            ['src' => '/images/blingsatan/photo-1.png', 'alt' => 'BLINGSATAN band photo 1', 'centerTransform' => 'matrix3d(.738462,-.130769,0,-.00181624,0,.969231,0,0,0,0,1,0,0,2.215385,0,1)'],
         ],
     ],
     'kayl' => $common + [

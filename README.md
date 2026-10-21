@@ -43,7 +43,7 @@ render('components/photo-carousel', [
 ]);
 ```
 
-The active photo is centered in an upright square frame; side cards tilt and shrink. Supply `centerSrc` when `src` already contains a perspective effect, using the original untransformed photo. Omitting it uses `src` in both positions and preserves any distortion baked into that image. Controls are generated from the photo count; empty galleries render nothing and single photos have no controls. Each carousel supports arrow keys and swiping independently.
+The active photo is centered in an upright square frame; side cards tilt and shrink. Supply `centerSrc` when `src` already contains a perspective effect, using the original untransformed photo. Alternatively, `centerTransform` accepts an asset-specific inverse CSS perspective matrix calibrated for the 144px active card. This correction only applies to the active image and is ignored when `centerSrc` is provided. Controls are generated from the photo count; empty galleries render nothing and single photos have no controls. Each carousel supports arrow keys and swiping independently.
 
 The compiled CSS is committed intentionally, so production only needs PHP. Run `npm run build` and commit `public/assets/app.css` after changing templates or Tailwind styles.
 

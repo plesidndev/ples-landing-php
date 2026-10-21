@@ -14,7 +14,7 @@ $photoCount = count($photos);
             $position = abs($offset) > 2 ? 'hidden' : ($offset < 0 ? 5 + $offset : $offset);
             ?>
             <div data-photo-slide data-position="<?= $position ?>" class="photo-carousel-slide" role="group" aria-roledescription="slide" aria-label="<?= $index + 1 ?> of <?= $photoCount ?>" aria-hidden="<?= $index === 0 ? 'false' : 'true' ?>">
-                <img data-photo-center src="<?= e($photo['centerSrc'] ?? $photo['src']) ?>" alt="<?= e($photo['alt'] ?? '') ?>" width="288" height="288" loading="lazy" decoding="async">
+                <img data-photo-center src="<?= e($photo['centerSrc'] ?? $photo['src']) ?>" alt="<?= e($photo['alt'] ?? '') ?>" <?= !isset($photo['centerSrc']) && isset($photo['centerTransform']) ? 'style="object-fit: fill; transform: ' . e($photo['centerTransform']) . '; transform-origin: 0 0;"' : '' ?> width="288" height="288" loading="lazy" decoding="async">
                 <img data-photo-side src="<?= e($photo['src']) ?>" alt="" aria-hidden="true" width="288" height="288" loading="lazy" decoding="async">
             </div>
         <?php endforeach; ?>
