@@ -17,6 +17,10 @@ done
 
 # Sources that are rendered at layout scale and therefore need size variants.
 SOURCES="
+arta/hero.png
+arta/background.png
+arta/wordmark.png
+arta/mask.png
 blingsatan/hero.png
 blingsatan/background.png
 blingsatan/petaruh-artwork.png
@@ -33,6 +37,11 @@ callii/photo-collage.jpg
 callii/brngakas-hero.png
 maf/hero.png
 "
+
+# Optional relative paths allow rebuilding only newly added artist assets.
+if [ "$#" -gt 0 ]; then
+    SOURCES="$*"
+fi
 
 for rel in $SOURCES; do
     src="$IMG/$rel"

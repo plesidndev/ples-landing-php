@@ -16,7 +16,7 @@ The first argument is the artist and the optional second argument is the port:
 ./run.sh maf 9000
 ```
 
-The script creates the local environment file when needed, builds missing CSS, and starts the PHP server. Available artists are `default`, `callii`, `devadata`, `blingsatan`, `kayl`, `maf`, and `lili`.
+The script creates the local environment file when needed, builds missing CSS, and starts the PHP server. Available artists are `default`, `arta`, `callii`, `devadata`, `blingsatan`, `kayl`, `maf`, and `lili`.
 
 You can also run the setup manually:
 
@@ -27,7 +27,7 @@ npm run build
 ARTIST_ID=lili php -S localhost:8080 -t public
 ```
 
-Use `callii`, `devadata`, `blingsatan`, `kayl`, `maf`, `lili`, or `default` for `ARTIST_ID`. Environment variables take precedence over `app/environment.php`; the file is ignored by Git.
+Use `arta`, `callii`, `devadata`, `blingsatan`, `kayl`, `maf`, `lili`, or `default` for `ARTIST_ID`. Environment variables take precedence over `app/environment.php`; the file is ignored by Git.
 
 ## Photo carousel
 
@@ -73,3 +73,9 @@ The deployed `public_html/index.php` automatically loads `ples-landing-php/app/b
 
 Do not upload `.git`, `node_modules`, source CSS, configuration, or the complete repository into `public_html`.
 # ples-landing-php
+
+## ARTA
+
+Run `./run.sh arta 8090` to preview ARTA. Its production hostname is `arta.plesconnect.app`.
+
+Official links will be supplied later: set `feature_platforms` for SLOWLY, `platforms` for ARZEN ZONE, and `feature_video` / `video` for the two YouTube slots in `app/artists.php`. Pending cards stay visible without a navigation target. Entering an `href` enables a DSP card; a YouTube `id` enables inline playback. Set each video's `poster` when the final artwork is available.

@@ -16,6 +16,7 @@ $dspBrands = [
  * removing the card and dropping it from the derived sameAs at the same time.
  *
  * A bare URL string is still accepted and treated as active.
+ * pending=true keeps an empty-link card visible but disabled until href is supplied.
  */
 $platforms = static function (array $links) use ($dspBrands): array {
     $cards = [];
@@ -28,12 +29,13 @@ $platforms = static function (array $links) use ($dspBrands): array {
         $link = $links[$id];
         $href = is_array($link) ? (string) ($link['href'] ?? '') : (string) $link;
         $active = is_array($link) ? (bool) ($link['active'] ?? true) : true;
+        $pending = is_array($link) && ($link['pending'] ?? false) && $href === '';
 
-        if (!$active || $href === '') {
+        if (!$active || ($href === '' && !$pending)) {
             continue;
         }
 
-        $cards[] = ['id' => $id, 'href' => $href] + $brand;
+        $cards[] = ['id' => $id, 'href' => $href, 'pending' => $pending] + $brand;
     }
 
     return $cards;
@@ -47,6 +49,40 @@ $common = [
 ];
 
 $artists = [
+    'arta' => $common + [
+        'id' => 'arta', 'indexable' => true, 'crawlable' => true, 'view' => 'artists/arta',
+        'name' => 'ARTA', 'release' => 'SLOWLY', 'title' => 'ARTA — SLOWLY | Ples+',
+        'description' => 'Temukan SLOWLY dari ARTA, ARZEN ZONE, dan galeri foto terbaru di Ples+ Connect.',
+        'default_url' => 'https://arta.plesconnect.app', 'theme_color' => '#240301',
+        'og_image' => '/images/arta/photo-2.png', 'og_size' => [288, 288],
+        'og_image_alt' => 'ARTA wearing a red mask and burgundy jacket',
+        'lcp_image_desktop' => '', 'lcp_image' => '/images/arta/hero.png',
+        'genre' => '', 'artist_same_as' => [],
+        'keywords' => ['ARTA', 'SLOWLY', 'ARZEN ZONE', 'Ples+', 'musik Indonesia'],
+        'tagline' => ['SLOWLY', '-ARZEN ZONE-'],
+        // Official destinations will be supplied later. Fill href to enable each card.
+        'feature_platforms' => $platforms([
+            'spotify' => ['href' => '', 'active' => true, 'pending' => true],
+            'apple-music' => ['href' => '', 'active' => true, 'pending' => true],
+            'tiktok' => ['href' => '', 'active' => true, 'pending' => true],
+        ]),
+        'platforms' => $platforms([
+            'spotify' => ['href' => '', 'active' => true, 'pending' => true],
+            'apple-music' => ['href' => '', 'active' => true, 'pending' => true],
+            'tiktok' => ['href' => '', 'active' => true, 'pending' => true],
+        ]),
+        'extra_same_as' => [],
+        'feature_video' => ['id' => '', 'href' => '', 'title' => 'ARTA — SLOWLY', 'poster' => ''],
+        'video' => ['id' => '', 'href' => '', 'title' => 'ARTA — Show Me Your Love', 'poster' => ''],
+        // Figma 442:1780, ordered from center through the right side and back to the left.
+        'photos' => [
+            ['src' => '/images/arta/photo-2.png', 'alt' => 'ARTA sitting outside in a red mask and burgundy jacket'],
+            ['src' => '/images/arta/photo-4.png', 'alt' => 'ARTA portrait in a red mask', 'centerTransform' => 'matrix3d(1.354167,.177083,0,.00245949,0,1.3125,0,0,0,0,1,0,0,-22.5,0,1)'],
+            ['src' => '/images/arta/photo-5.png', 'alt' => 'ARTA standing at a red railing', 'centerTransform' => 'matrix3d(1.356322,.178161,0,.00247446,0,1.310345,0,0,0,0,1,0,0,-22.344828,0,1)'],
+            ['src' => '/images/arta/photo-3.png', 'alt' => 'ARTA close-up in a red mask and glasses', 'centerTransform' => 'matrix3d(.737288,-.131356,0,-.00182486,0,.966102,0,0,0,0,1,0,0,2.440678,0,1)'],
+            ['src' => '/images/arta/photo-1.png', 'alt' => 'ARTA adjusting a red mask', 'centerTransform' => 'matrix3d(.738462,-.130769,0,-.00181624,0,.969231,0,0,0,0,1,0,0,2.215385,0,1)'],
+        ],
+    ],
     'devadata' => $common + [
         'id' => 'devadata', 'indexable' => true, 'crawlable' => true, 'view' => 'artists/devadata', 'name' => 'DEVADATA', 'release' => 'SAPUTANAH PAPUA',
         'title' => 'DEVADATA — SAPUTANAH PAPUA | Ples+',
@@ -181,7 +217,7 @@ $artists = [
     'default' => $common + [
         'id' => 'default', 'indexable' => false, 'crawlable' => true, 'view' => 'artists/default', 'name' => 'Ples+ Connect', 'release' => '',
         'title' => 'Ples+ Connect — Make Your Own Core',
-        'description' => 'Dengarkan rilis terbaru dari DEVADATA, BLINGSATAN, KAYL, CALLII, MAF, dan LiLi di Spotify, Apple Music, YouTube Music, dan TikTok.',
+        'description' => 'Dengarkan rilis terbaru dari ARTA, DEVADATA, BLINGSATAN, KAYL, CALLII, MAF, dan LiLi di Spotify, Apple Music, YouTube Music, dan TikTok.',
         'default_url' => 'https://plesconnect.app',
         // Dedicated card: the logo PNG is white-on-transparent, which social scrapers
         // flatten to white and render as a blank image.
@@ -195,11 +231,11 @@ $artists = [
 // sameAs is derived from both featured and secondary buttons: an inactive platform
 // is absent from the page and schema, and each URL only needs editing in one place.
 foreach ($artists as $id => $artist) {
-    $artists[$id]['same_as'] = array_values(array_unique(array_merge(
+    $artists[$id]['same_as'] = array_values(array_unique(array_filter(array_merge(
         array_column($artist['feature_platforms'] ?? [], 'href'),
         array_column($artist['platforms'], 'href'),
         $artist['extra_same_as'],
-    )));
+    ))));
 }
 
 return $artists;
