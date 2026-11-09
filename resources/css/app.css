@@ -10,6 +10,13 @@
 }
 
 @font-face {
+  font-family: "Island Moments";
+  src: url("/fonts/island-moments-latin.woff2") format("woff2");
+  font-weight: 400;
+  font-display: swap;
+}
+
+@font-face {
   font-family: "Bebas Neue";
   src: url("/fonts/bebas-neue-latin.woff2") format("woff2");
   font-weight: 400;
@@ -146,6 +153,7 @@ body { min-height: 100%; background: var(--background); color: var(--foreground)
 .nnc-release::before { content: ""; position: absolute; inset: 20px 0 13px; background: rgb(217 217 217 / .2); }
 .nnc-release > * { position: relative; }
 .nnc-release-title { text-align: center; font-size: 24px; line-height: 30px; font-weight: 700; }
+.nnc-release-date { display: block; margin: 12px 0 14px; text-align: center; font-family: "Island Moments", cursive; font-size: min(94px, 23.4vw); line-height: 1; font-weight: 400; white-space: nowrap; }
 .nnc-video { width: calc(100% - 50px); max-width: 384px; margin: 13px auto 0; }
 .nnc-presave { display: flex; align-items: center; height: 56px; margin: 13px 18px 0; padding: 0 16px 0 11px; border: 1px solid rgb(255 255 255 / .45); border-radius: 9999px; background: rgb(217 217 217 / .2); }
 .nnc-presave > * { display: flex; flex: 1; align-items: center; justify-content: center; height: 32px; border-radius: 9999px; background: white; color: black; font-size: 12px; font-weight: 800; filter: drop-shadow(0 4px 2px rgb(0 0 0 / .25)); }

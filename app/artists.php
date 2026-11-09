@@ -149,6 +149,8 @@ $artists = [
         'artist_same_as' => ['https://open.spotify.com/artist/78sW6oL0hgb49sNTohmG6z', 'https://music.apple.com/id/artist/nyamnyamcheese/1506193972'],
         'keywords' => ['NYAM NYAM CHEESE', 'Sialan', 'Ples+', 'musik Indonesia', 'lagu baru'], 'tagline' => ['OUT NOW!!', 'Sialan'],
         // Sialan is pre-save only (ONErpm). The cards below link to the artist profiles.
+        // Release date as written in Figma, plus the ISO form for <time datetime>.
+        'release_date' => ['label' => '13 . 10 . 26', 'iso' => '2026-10-13'],
         'presave' => ['href' => 'https://onerpm.link/295056174471', 'label' => 'PRE - SAVE'],
         'platforms' => $platforms([
             'spotify' => ['href' => 'https://open.spotify.com/artist/78sW6oL0hgb49sNTohmG6z', 'active' => true],

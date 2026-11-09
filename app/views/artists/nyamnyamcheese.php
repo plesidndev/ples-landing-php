@@ -12,6 +12,7 @@
         <div class="nnc-content">
             <section aria-labelledby="nnc-release" class="nnc-release">
                 <h2 id="nnc-release" class="nnc-release-title">OUT NOW!!<br><?= e($site['release']) ?></h2>
+                <?php if ($site['release_date'] ?? null): ?><time class="nnc-release-date" datetime="<?= e($site['release_date']['iso']) ?>"><?= e($site['release_date']['label']) ?></time><?php endif; ?>
                 <?php if ($site['feature_video']) render('components/video-card', ['video' => $site['feature_video'], 'className' => 'nnc-video']); ?>
                 <div class="nnc-presave">
                     <?php if ($site['presave']['href'] !== ''): ?>
