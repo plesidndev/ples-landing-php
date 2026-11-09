@@ -155,7 +155,7 @@ $artists = [
             'apple-music' => ['href' => 'https://music.apple.com/id/artist/nyamnyamcheese/1506193972', 'active' => true],
         ]),
         'extra_same_as' => [],
-        'feature_video' => ['id' => '', 'href' => '', 'title' => 'NYAM NYAM CHEESE — Sialan', 'poster' => '/images/nyamnyamcheese/video.jpg'],
+        'feature_video' => ['id' => 'cafcaRNLJ0k', 'href' => 'https://youtu.be/cafcaRNLJ0k', 'title' => 'NYAM NYAM CHEESE — Sialan', 'poster' => '/images/nyamnyamcheese/video.jpg'],
         'video' => ['id' => '', 'href' => '', 'title' => 'NYAM NYAM CHEESE on YouTube', 'poster' => '/images/nyamnyamcheese/video.jpg'],
         // Figma 499:1990, ordered from center through the right side and back to the left.
         'photos' => [
@@ -188,8 +188,8 @@ $artists = [
             'apple-music' => ['href' => 'https://music.apple.com/id/artist/obeiv/1742984607', 'active' => true],
         ]),
         'extra_same_as' => [],
-        'feature_video' => ['id' => '', 'href' => '', 'title' => 'OBEIV — NADI', 'poster' => '/images/obeiv/nadi-video.jpg'],
-        'video' => ['id' => '', 'href' => '', 'title' => 'OBEIV — LELAH', 'poster' => '/images/obeiv/lelah-video.jpg'],
+        'feature_video' => ['id' => 'o7jxgvo180U', 'href' => 'https://youtu.be/o7jxgvo180U', 'title' => 'OBEIV — NADI', 'poster' => '/images/obeiv/nadi-video.jpg'],
+        'video' => ['id' => '2weDNI641rw', 'href' => 'https://youtu.be/2weDNI641rw', 'title' => 'OBEIV — LELAH', 'poster' => '/images/obeiv/lelah-video.jpg'],
         // Figma 510:1768, ordered from center through the right side and back to the left.
         'photos' => [
             ['src' => '/images/obeiv/photo-2.png', 'alt' => 'OBEIV band photo 2'],
