@@ -16,7 +16,7 @@ The first argument is the artist and the optional second argument is the port:
 ./run.sh maf 9000
 ```
 
-The script creates the local environment file when needed, builds missing CSS, and starts the PHP server. Available artists are `default`, `arta`, `callii`, `devadata`, `blingsatan`, `kayl`, `maf`, and `lili`.
+The script creates the local environment file when needed, builds missing CSS, and starts the PHP server. Available artists are `default`, `arta`, `callii`, `devadata`, `blingsatan`, `nyamnyamcheese`, `obeiv`, `kayl`, `maf`, and `lili`.
 
 You can also run the setup manually:
 
@@ -27,7 +27,7 @@ npm run build
 ARTIST_ID=lili php -S localhost:8080 -t public
 ```
 
-Use `arta`, `callii`, `devadata`, `blingsatan`, `kayl`, `maf`, `lili`, or `default` for `ARTIST_ID`. Environment variables take precedence over `app/environment.php`; the file is ignored by Git.
+Use `arta`, `callii`, `devadata`, `blingsatan`, `nyamnyamcheese`, `obeiv`, `kayl`, `maf`, `lili`, or `default` for `ARTIST_ID`. Environment variables take precedence over `app/environment.php`; the file is ignored by Git.
 
 ## Photo carousel
 

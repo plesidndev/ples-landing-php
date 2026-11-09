@@ -51,29 +51,25 @@ $common = [
 $artists = [
     'arta' => $common + [
         'id' => 'arta', 'indexable' => true, 'crawlable' => true, 'view' => 'artists/arta',
-        'name' => 'ARTA', 'release' => 'SLOWLY', 'title' => 'ARTA — SLOWLY | Ples+',
-        'description' => 'Temukan SLOWLY dari ARTA, ARZEN ZONE, dan galeri foto terbaru di Ples+ Connect.',
+        'name' => 'ARTA', 'release' => 'BODO', 'title' => 'ARTA — BODO | Ples+',
+        'description' => 'Dengarkan BODO dari ARTA, tonton ARZEN ZONE, dan lihat galeri foto terbaru di Ples+ Connect.',
         'default_url' => 'https://arta.plesconnect.app', 'theme_color' => '#240301',
         'og_image' => '/images/arta/photo-2.png', 'og_size' => [288, 288],
         'og_image_alt' => 'ARTA wearing a red mask and burgundy jacket',
         'lcp_image_desktop' => '', 'lcp_image' => '/images/arta/hero.png',
         'genre' => '', 'artist_same_as' => [],
-        'keywords' => ['ARTA', 'SLOWLY', 'ARZEN ZONE', 'Ples+', 'musik Indonesia'],
-        'tagline' => ['SLOWLY', '-ARZEN ZONE-'],
-        // Official destinations will be supplied later. Fill href to enable each card.
+        'keywords' => ['ARTA', 'BODO', 'ARZEN ZONE', 'Ples+', 'musik Indonesia'],
+        'tagline' => ['BODO', '-ARZEN ZONE-'],
+        // BODO release links. Platforms without an official link are left out until one is supplied.
         'feature_platforms' => $platforms([
-            'spotify' => ['href' => '', 'active' => true, 'pending' => true],
-            'apple-music' => ['href' => '', 'active' => true, 'pending' => true],
-            'tiktok' => ['href' => '', 'active' => true, 'pending' => true],
+            'spotify' => ['href' => 'https://open.spotify.com/track/5xkgxS3dUtVc5SUdADBJGd', 'active' => true],
+            'apple-music' => ['href' => 'https://music.apple.com/id/album/bodo-single/6823285986', 'active' => true],
         ]),
-        'platforms' => $platforms([
-            'spotify' => ['href' => '', 'active' => true, 'pending' => true],
-            'apple-music' => ['href' => '', 'active' => true, 'pending' => true],
-            'tiktok' => ['href' => '', 'active' => true, 'pending' => true],
-        ]),
+        // ARZEN ZONE cards: add links here (spotify / apple-music / tiktok) when supplied.
+        'platforms' => $platforms([]),
         'extra_same_as' => [],
-        'feature_video' => ['id' => '', 'href' => '', 'title' => 'ARTA — SLOWLY', 'poster' => ''],
-        'video' => ['id' => '', 'href' => '', 'title' => 'ARTA — Show Me Your Love', 'poster' => ''],
+        'feature_video' => ['id' => 'qUvtX5LuivA', 'href' => 'https://youtu.be/qUvtX5LuivA', 'title' => 'ARTA — BODO', 'poster' => ''],
+        'video' => ['id' => 'UwCKORyDPxU', 'href' => 'https://youtu.be/UwCKORyDPxU', 'title' => 'ARTA — Show Me Your Love', 'poster' => ''],
         // Figma 442:1780, ordered from center through the right side and back to the left.
         'photos' => [
             ['src' => '/images/arta/photo-2.png', 'alt' => 'ARTA sitting outside in a red mask and burgundy jacket'],
@@ -141,6 +137,68 @@ $artists = [
             ['src' => '/images/blingsatan/photo-1.png', 'alt' => 'BLINGSATAN band photo 1', 'centerTransform' => 'matrix3d(.738462,-.130769,0,-.00181624,0,.969231,0,0,0,0,1,0,0,2.215385,0,1)'],
         ],
     ],
+    'nyamnyamcheese' => $common + [
+        'id' => 'nyamnyamcheese', 'indexable' => true, 'crawlable' => true, 'view' => 'artists/nyamnyamcheese',
+        'name' => 'NYAM NYAM CHEESE', 'release' => 'Sialan', 'title' => 'NYAM NYAM CHEESE — Sialan | Ples+',
+        'description' => 'Dengarkan “Sialan” dari NYAM NYAM CHEESE dan temukan video serta musik lainnya di sini.',
+        'default_url' => 'https://nyamnyamcheese.plesconnect.app', 'theme_color' => '#260807',
+        'og_image' => '/images/nyamnyamcheese/hero.jpg', 'og_size' => [909, 1616],
+        'og_image_alt' => 'NYAM NYAM CHEESE band portrait',
+        'lcp_image_desktop' => '', 'lcp_image' => '/images/nyamnyamcheese/hero.jpg',
+        'genre' => 'Deathcore',
+        'artist_same_as' => ['https://open.spotify.com/artist/78sW6oL0hgb49sNTohmG6z', 'https://music.apple.com/id/artist/nyamnyamcheese/1506193972'],
+        'keywords' => ['NYAM NYAM CHEESE', 'Sialan', 'Ples+', 'musik Indonesia', 'lagu baru'], 'tagline' => ['OUT NOW!!', 'Sialan'],
+        // Sialan is pre-save only (ONErpm). The cards below link to the artist profiles.
+        'presave' => ['href' => 'https://onerpm.link/295056174471', 'label' => 'PRE - SAVE'],
+        'platforms' => $platforms([
+            'spotify' => ['href' => 'https://open.spotify.com/artist/78sW6oL0hgb49sNTohmG6z', 'active' => true],
+            'apple-music' => ['href' => 'https://music.apple.com/id/artist/nyamnyamcheese/1506193972', 'active' => true],
+        ]),
+        'extra_same_as' => [],
+        'feature_video' => ['id' => '', 'href' => '', 'title' => 'NYAM NYAM CHEESE — Sialan', 'poster' => '/images/nyamnyamcheese/video.jpg'],
+        'video' => ['id' => '', 'href' => '', 'title' => 'NYAM NYAM CHEESE on YouTube', 'poster' => '/images/nyamnyamcheese/video.jpg'],
+        // Figma 499:1990, ordered from center through the right side and back to the left.
+        'photos' => [
+            ['src' => '/images/nyamnyamcheese/photo-2.png', 'alt' => 'NYAM NYAM CHEESE posing in front of a stone wall'],
+            ['src' => '/images/nyamnyamcheese/photo-4.png', 'alt' => 'NYAM NYAM CHEESE group portrait', 'centerTransform' => 'matrix3d(1.354167,.177083,0,.00245949,0,1.3125,0,0,0,0,1,0,0,-22.5,0,1)'],
+            ['src' => '/images/nyamnyamcheese/photo-5.png', 'alt' => 'NYAM NYAM CHEESE red artwork', 'centerTransform' => 'matrix3d(1.356322,.178161,0,.00247446,0,1.310345,0,0,0,0,1,0,0,-22.344828,0,1)'],
+            ['src' => '/images/nyamnyamcheese/photo-3.png', 'alt' => 'NYAM NYAM CHEESE members with arms crossed', 'centerTransform' => 'matrix3d(.737288,-.131356,0,-.00182486,0,.966102,0,0,0,0,1,0,0,2.440678,0,1)'],
+            ['src' => '/images/nyamnyamcheese/photo-1.png', 'alt' => 'NYAM NYAM CHEESE in a smoky warehouse', 'centerTransform' => 'matrix3d(.738462,-.130769,0,-.00181624,0,.969231,0,0,0,0,1,0,0,2.215385,0,1)'],
+        ],
+    ],
+    'obeiv' => $common + [
+        'id' => 'obeiv', 'indexable' => true, 'crawlable' => true, 'view' => 'artists/obeiv',
+        'name' => 'OBEIV', 'release' => 'NADI', 'title' => 'OBEIV — NADI | Ples+',
+        'description' => 'Dengarkan “NADI” dari OBEIV dan temukan video serta musik lainnya di sini.',
+        'default_url' => 'https://obeiv.plesconnect.app', 'theme_color' => '#272727',
+        'og_image' => '/images/obeiv/hero.jpg', 'og_size' => [1058, 1446],
+        'og_image_alt' => 'OBEIV band portrait',
+        'lcp_image_desktop' => '', 'lcp_image' => '/images/obeiv/hero.jpg',
+        'genre' => '',
+        'artist_same_as' => ['https://open.spotify.com/artist/3EiWJF0dhBHm6fq1WsfJJD', 'https://music.apple.com/id/artist/obeiv/1742984607'],
+        'keywords' => ['OBEIV', 'NADI', 'LELAH', 'Ples+', 'musik Indonesia', 'lagu baru'], 'tagline' => ['OUT NOW!!', 'NADI'],
+        // NADI release links.
+        'feature_platforms' => $platforms([
+            'spotify' => ['href' => 'https://open.spotify.com/track/1GHBFOqFjEQijtp5hAW4vJ', 'active' => true],
+            'apple-music' => ['href' => 'https://music.apple.com/id/album/n-a-d-i-single/6807940079', 'active' => true],
+        ]),
+        // Artist profiles.
+        'platforms' => $platforms([
+            'spotify' => ['href' => 'https://open.spotify.com/artist/3EiWJF0dhBHm6fq1WsfJJD', 'active' => true],
+            'apple-music' => ['href' => 'https://music.apple.com/id/artist/obeiv/1742984607', 'active' => true],
+        ]),
+        'extra_same_as' => [],
+        'feature_video' => ['id' => '', 'href' => '', 'title' => 'OBEIV — NADI', 'poster' => '/images/obeiv/nadi-video.jpg'],
+        'video' => ['id' => '', 'href' => '', 'title' => 'OBEIV — LELAH', 'poster' => '/images/obeiv/lelah-video.jpg'],
+        // Figma 510:1768, ordered from center through the right side and back to the left.
+        'photos' => [
+            ['src' => '/images/obeiv/photo-2.png', 'alt' => 'OBEIV band photo 2'],
+            ['src' => '/images/obeiv/photo-4.png', 'alt' => 'OBEIV band photo 4', 'centerTransform' => 'matrix3d(1.354167,.177083,0,.00245949,0,1.3125,0,0,0,0,1,0,0,-22.5,0,1)'],
+            ['src' => '/images/obeiv/photo-5.png', 'alt' => 'OBEIV band photo 5', 'centerTransform' => 'matrix3d(1.356322,.178161,0,.00247446,0,1.310345,0,0,0,0,1,0,0,-22.344828,0,1)'],
+            ['src' => '/images/obeiv/photo-3.png', 'alt' => 'OBEIV band photo 3', 'centerTransform' => 'matrix3d(.737288,-.131356,0,-.00182486,0,.966102,0,0,0,0,1,0,0,2.440678,0,1)'],
+            ['src' => '/images/obeiv/photo-1.png', 'alt' => 'OBEIV band photo 1', 'centerTransform' => 'matrix3d(.738462,-.130769,0,-.00181624,0,.969231,0,0,0,0,1,0,0,2.215385,0,1)'],
+        ],
+    ],
     'kayl' => $common + [
         'id' => 'kayl', 'indexable' => true, 'crawlable' => true, 'view' => 'artists/kayl', 'name' => 'KAYL', 'release' => 'dar der D0R!!',
         'title' => 'KAYL — dar der D0R!! | Ples+',
@@ -159,6 +217,15 @@ $artists = [
         ]),
         'extra_same_as' => ['https://www.youtube.com/watch?v=dgXfPAOGd4o'],
         'video' => ['id' => 'dgXfPAOGd4o', 'href' => 'https://www.youtube.com/watch?v=dgXfPAOGd4o', 'title' => 'KAYL — dar der D0R!!', 'poster' => '/images/kayl/hero.jpg'],
+        // BODO (ARTA with KAYL), shown above dar der D0R!! in the same style as the ARTA page.
+        'feature' => [
+            'release' => 'BODO',
+            'video' => ['id' => 'qUvtX5LuivA', 'href' => 'https://youtu.be/qUvtX5LuivA', 'title' => 'ARTA — BODO', 'poster' => ''],
+            'platforms' => $platforms([
+                'spotify' => ['href' => 'https://open.spotify.com/track/5xkgxS3dUtVc5SUdADBJGd', 'active' => true],
+                'apple-music' => ['href' => 'https://music.apple.com/id/album/bodo-single/6823285986', 'active' => true],
+            ]),
+        ],
     ],
     'callii' => $common + [
         'id' => 'callii', 'indexable' => true, 'crawlable' => true, 'view' => 'artists/callii', 'name' => 'CALLII', 'release' => 'BRANKAS ft 6SENTANI',
@@ -217,7 +284,7 @@ $artists = [
     'default' => $common + [
         'id' => 'default', 'indexable' => false, 'crawlable' => true, 'view' => 'artists/default', 'name' => 'Ples+ Connect', 'release' => '',
         'title' => 'Ples+ Connect — Make Your Own Core',
-        'description' => 'Dengarkan rilis terbaru dari ARTA, DEVADATA, BLINGSATAN, KAYL, CALLII, MAF, dan LiLi di Spotify, Apple Music, YouTube Music, dan TikTok.',
+        'description' => 'Dengarkan rilis terbaru dari ARTA, DEVADATA, BLINGSATAN, NYAM NYAM CHEESE, OBEIV, KAYL, CALLII, MAF, dan LiLi di Spotify, Apple Music, YouTube Music, dan TikTok.',
         'default_url' => 'https://plesconnect.app',
         // Dedicated card: the logo PNG is white-on-transparent, which social scrapers
         // flatten to white and render as a blank image.

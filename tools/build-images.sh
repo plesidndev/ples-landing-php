@@ -25,6 +25,12 @@ blingsatan/hero.png
 blingsatan/background.png
 blingsatan/petaruh-artwork.png
 blingsatan/petaruh-wordmark.png
+nyamnyamcheese/hero.jpg
+nyamnyamcheese/background.jpg
+nyamnyamcheese/wordmark.png
+obeiv/hero.jpg
+obeiv/background.jpg
+obeiv/wordmark.png
 devadata/artwork.png
 devadata/hero.jpg
 devadata/devabackgr.jpg

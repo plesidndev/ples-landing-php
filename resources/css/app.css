@@ -35,6 +35,13 @@ body { min-height: 100%; background: var(--background); color: var(--foreground)
   font-display: swap;
 }
 
+@font-face {
+  font-family: "Koulen";
+  src: url("/fonts/koulen-latin.woff2") format("woff2");
+  font-weight: 400;
+  font-display: swap;
+}
+
 .video-card { position: relative; display: block; width: 100%; aspect-ratio: 16 / 9; overflow: hidden; border-radius: 16px; background: #160000; }
 .video-card:is(button, a) { cursor: pointer; }
 .video-card-pending { background: linear-gradient(120deg, #4b0508, #ad0013 55%, #310203); }
@@ -51,11 +58,11 @@ body { min-height: 100%; background: var(--background); color: var(--foreground)
 .arta-hero { position: absolute; left: 50%; top: -359px; width: 872px; height: auto; max-width: none; transform: translateX(-50%); }
 .arta-wordmark { position: absolute; left: 50%; top: 386px; width: 565px; height: auto; max-width: none; transform: translateX(-50%); }
 .arta-content { position: relative; min-width: 0; }
-.arta-release-artwork { position: relative; height: 350px; text-align: center; }
-.arta-out-now { position: relative; z-index: 1; font-size: 32px; line-height: 40px; font-weight: 700; }
-.arta-release-title { position: relative; z-index: 1; margin-top: 0; font-family: "Krona One", sans-serif; font-size: clamp(40px, 15.92vw, 64px); line-height: 1.25; }
-.arta-mask { position: absolute; left: 50%; top: 35px; width: 349px; max-width: 90%; height: auto; transform: translateX(-50%); filter: blur(4.5px); }
-.arta-video { width: calc(100% - 50px); max-width: 384px; margin-inline: auto; }
+.arta-release-artwork { position: relative; padding-top: 16px; text-align: center; }
+.arta-out-now { font-size: 32px; line-height: 32px; font-weight: 700; }
+.arta-release-title { margin-top: 8px; font-family: "Koulen", sans-serif; font-size: min(128px, 31.8vw); font-weight: 400; line-height: .8; padding-top: .12em; }
+.arta-video { width: calc(100% - 50px); max-width: 384px; margin: 8px auto 0; }
+.arta-zone .arta-video { margin-top: 0; }
 .arta-links { display: flex; flex-direction: column; gap: 12px; margin: 26px 18px 0; }
 .arta-links > div { border: 1px solid rgb(255 255 255 / .4); }
 .arta-links :is(a, [aria-disabled]) { font-size: 12px; padding: 7px 14px; }
@@ -121,4 +128,82 @@ body { min-height: 100%; background: var(--background); color: var(--foreground)
   .blingsatan-video { max-width: 384px; margin-inline: auto; width: calc(100% - 50px); }
   .blingsatan-links { max-width: 438px; width: 100%; margin-inline: auto; }
   .blingsatan-gallery { max-width: 402px; margin-inline: auto; }
+}
+
+/* NYAM NYAM CHEESE: Figma 494:1657. Desktop uses the shared sticky-portrait pattern. */
+.nnc { background: #260807; }
+.nnc-background { position: absolute; inset: 0; pointer-events: none; }
+.nnc-background picture { display: block; height: 100%; }
+.nnc-background img { width: 100%; height: 100%; object-fit: cover; object-position: 47% center; }
+.nnc-layout { max-width: 402px; margin-inline: auto; }
+.nnc-hero { position: relative; aspect-ratio: 402 / 322; overflow: hidden; }
+.nnc-hero picture { display: block; height: 100%; }
+.nnc-hero img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 80%; }
+.nnc-wordmark { position: relative; z-index: 1; height: 61px; margin-top: 11px; }
+.nnc-wordmark img { position: absolute; left: 6px; top: -91.66px; width: 393px; max-width: calc(100% - 9px); height: auto; }
+.nnc-content { position: relative; min-width: 0; }
+.nnc-release { position: relative; margin-top: 11px; padding: 25px 0 34px; }
+.nnc-release::before { content: ""; position: absolute; inset: 20px 0 13px; background: rgb(217 217 217 / .2); }
+.nnc-release > * { position: relative; }
+.nnc-release-title { text-align: center; font-size: 24px; line-height: 30px; font-weight: 700; }
+.nnc-video { width: calc(100% - 50px); max-width: 384px; margin: 13px auto 0; }
+.nnc-presave { display: flex; align-items: center; height: 56px; margin: 13px 18px 0; padding: 0 16px 0 11px; border: 1px solid rgb(255 255 255 / .45); border-radius: 9999px; background: rgb(217 217 217 / .2); }
+.nnc-presave > * { display: flex; flex: 1; align-items: center; justify-content: center; height: 32px; border-radius: 9999px; background: white; color: black; font-size: 12px; font-weight: 800; filter: drop-shadow(0 4px 2px rgb(0 0 0 / .25)); }
+.nnc-presave a:hover { filter: drop-shadow(0 4px 2px rgb(0 0 0 / .25)) brightness(.95); }
+.nnc-music { margin-top: 11px; }
+.nnc-music .nnc-video { margin-top: 0; }
+.nnc-links { display: flex; flex-direction: column; gap: 12px; margin: 11px 18px 0; }
+.nnc-links > div { border: 1px solid rgb(255 255 255 / .45); }
+.nnc-links :is(a, [aria-disabled]) { font-size: 12px; padding: 7px 14px; }
+.nnc-gallery { margin-top: 11px; padding-bottom: 28px; }
+.nnc :is(a, button, [tabindex]):focus-visible { outline: 2px solid white; outline-offset: 4px; }
+@media (min-width: 768px) {
+  .nnc-layout { display: grid; grid-template-columns: 1fr 1fr; max-width: none; min-height: 100vh; }
+  .nnc-portrait { position: sticky; top: 0; height: 100vh; overflow: hidden; }
+  .nnc-hero { position: absolute; inset: 0; aspect-ratio: auto; }
+  .nnc-hero img { object-position: center; }
+  .nnc-wordmark { position: absolute; left: 0; right: 0; bottom: 40px; height: auto; margin: 0; }
+  .nnc-wordmark img { position: static; display: block; width: 80%; max-width: 560px; margin-inline: auto; }
+  .nnc-content { display: flex; flex-direction: column; padding-top: 76px; }
+  .nnc-release, .nnc-music, .nnc-gallery { width: 100%; max-width: 429px; margin-inline: auto; }
+  .nnc-release { margin-top: 0; }
+  .nnc-content > footer { margin-top: auto; }
+}
+
+/* OBEIV: Figma 510:1685. Desktop uses the shared sticky-portrait pattern. */
+.obeiv { background: #272727; }
+.obeiv-background { position: absolute; inset: 0; pointer-events: none; }
+.obeiv-background picture { display: block; height: 100%; }
+.obeiv-background img { width: 100%; height: 100%; object-fit: cover; }
+.obeiv-layout { max-width: 402px; margin-inline: auto; }
+.obeiv-hero { position: relative; aspect-ratio: 402 / 321; overflow: hidden; }
+.obeiv-hero picture { display: block; height: 100%; }
+.obeiv-hero img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 32%; }
+.obeiv-wordmark { position: relative; z-index: 1; height: 61px; margin-top: 11px; }
+.obeiv-wordmark img { position: absolute; left: 50%; top: -144.66px; width: 311px; height: auto; transform: translateX(-50%); filter: drop-shadow(0 4px 4px rgb(0 0 0 / .25)); }
+.obeiv-content { position: relative; min-width: 0; }
+.obeiv-release { position: relative; margin-top: 11px; padding: 25px 0 22px; }
+.obeiv-release::before { content: ""; position: absolute; inset: 20px 0 0; background: rgb(217 217 217 / .2); }
+.obeiv-release > * { position: relative; }
+.obeiv-release-title { text-align: center; font-size: 24px; line-height: 30px; font-weight: 700; }
+.obeiv-video { width: calc(100% - 50px); max-width: 384px; margin: 13px auto 0; }
+.obeiv-links { display: flex; flex-direction: column; gap: 12px; margin: 14px 18px 0; }
+.obeiv-links > div { border: 1px solid rgb(255 255 255 / .45); }
+.obeiv-links :is(a, [aria-disabled]) { font-size: 12px; padding: 7px 14px; }
+.obeiv-music { margin-top: 26px; }
+.obeiv-music .obeiv-video { margin-top: 0; }
+.obeiv-music .obeiv-links { margin-top: 13px; }
+.obeiv-gallery { margin-top: 10px; padding-bottom: 28px; }
+.obeiv :is(a, button, [tabindex]):focus-visible { outline: 2px solid white; outline-offset: 4px; }
+@media (min-width: 768px) {
+  .obeiv-layout { display: grid; grid-template-columns: 1fr 1fr; max-width: none; min-height: 100vh; }
+  .obeiv-portrait { position: sticky; top: 0; height: 100vh; overflow: hidden; }
+  .obeiv-hero { position: absolute; inset: 0; aspect-ratio: auto; }
+  .obeiv-hero img { object-position: center; }
+  .obeiv-wordmark { position: absolute; left: 0; right: 0; bottom: 40px; height: auto; margin: 0; }
+  .obeiv-wordmark img { position: static; display: block; width: 60%; max-width: 440px; margin-inline: auto; transform: none; }
+  .obeiv-content { display: flex; flex-direction: column; padding-top: 76px; }
+  .obeiv-release, .obeiv-music, .obeiv-gallery { width: 100%; max-width: 429px; margin-inline: auto; }
+  .obeiv-release { margin-top: 0; }
+  .obeiv-content > footer { margin-top: auto; }
 }

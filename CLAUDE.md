@@ -65,7 +65,7 @@ Do not "fix" step 3 by redirecting unknown paths to the home page. Serving the h
 
 ### Desktop layout pattern
 
-All five artists share one structure, with KAYL as the reference implementation:
+Artist pages should share this structure. `nyamnyamcheese` is the reference implementation; see the note below for older pages that do not follow it yet:
 
 ```
 md:grid md:min-h-screen md:grid-cols-2
@@ -76,6 +76,27 @@ md:grid md:min-h-screen md:grid-cols-2
 The left image is pinned with `sticky` and the **page** scrolls. Do not reintroduce `overflow-y-auto` on the content column — nested scroll containers give two scrollbars, chain badly on trackpads, and need focus before keyboard scroll works. The visual result is identical.
 
 Mobile is the same markup unstacked, so content order in the right column is also the mobile order below the image.
+
+**On desktop the left panel must stay pinned while the right column scrolls.** Sticky only pins to the nearest scroll container, so no ancestor of the sticky panel may have `overflow: hidden|auto|scroll`. To clip the background on `<main>`, use `overflow-clip` (`overflow: clip` does not create a scroll container), not `overflow-hidden`. With `overflow-hidden` the panel scrolls away with the page. Check it by actually scrolling at 1440×900: the panel's `getBoundingClientRect().top` must stay `0`. `nyamnyamcheese` is the reference. `blingsatan`, `callii`, `kayl` and `devadata` predate this rule and still use an `md:h-screen` page with an inner scrolling column. Do not copy that.
+
+### Designing a new artist page from Figma
+
+Each artist page is a 402px-wide mobile frame in the `PLES- ticket` Figma file. Implement it like this:
+
+- **Mobile:** the layout is centred with `max-width: 402px`, and Figma's pixel values are used as-is. Convert Figma's absolute positioning to normal flow (margins and gaps from the frame's auto-layout). Keep absolute positioning only for real overlaps, such as the wordmark sitting over the bottom of the hero.
+- **Desktop (`md:`):** use a two-column grid. The left column is the hero/portrait plus the wordmark, sticky and `100vh`. The right column holds the content with `padding-top: 76px`, sections at `max-width: ~429px` centred, and the footer pushed down with `margin-top: auto`.
+- **CSS:** artist styles go in `resources/css/app.css` under a short prefix (`.nnc-*`, `.arta-*`), with the Figma node id in a comment above the block.
+- **Reuse the shared components** instead of restyling per artist:
+  - `artist-header`
+  - `video-card` (YouTube `id` plays inline, `href` links out, empty shows the poster as "coming soon")
+  - `dsp-card` with `variant => 'glass'` (cards: `rgb(217 217 217 / .2)` background, `1px` border at `rgb(255 255 255 / .45)`)
+  - `photo-carousel`
+  - `footer`
+- **Gallery photos:** Figma exports them with the coverflow perspective baked in, as 264×252 and 240×228 trapezoids plus a 288×288 centre photo. Order them as centre, right, far right, far left, left, and reuse the `centerTransform` matrices from an existing artist whose photo has the same size and tilt.
+- **Links:** use only official links the user supplies. A platform with no link yet is `pending => true` (visible, not clickable). Do not fill gaps with search URLs or artist profiles unless the user asks for that.
+- **Assets:** download them from Figma, never from screenshots. Crop oversized source images to their visible frame. Add layout-scale images to `tools/build-images.sh`.
+- **Register the new artist** in `run.sh`, `app/environment.example.php`, the README, and the `default` site description.
+- **Verify** with headless Chrome at a mobile width (Chrome's minimum window is ~500px, so crop to 402) and at 1440×900 after scrolling.
 
 ## Asset conventions
 
