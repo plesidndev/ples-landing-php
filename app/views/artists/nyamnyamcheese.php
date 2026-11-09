@@ -12,7 +12,7 @@
         <div class="nnc-content">
             <section aria-labelledby="nnc-release" class="nnc-release">
                 <h2 id="nnc-release" class="nnc-release-title">OUT NOW!!<br><?= e($site['release']) ?></h2>
-                <?php render('components/video-card', ['video' => $site['feature_video'], 'className' => 'nnc-video']); ?>
+                <?php if ($site['feature_video']) render('components/video-card', ['video' => $site['feature_video'], 'className' => 'nnc-video']); ?>
                 <div class="nnc-presave">
                     <?php if ($site['presave']['href'] !== ''): ?>
                         <a href="<?= e($site['presave']['href']) ?>" target="_blank" rel="noopener noreferrer" data-dsp="presave" aria-label="Pre-save <?= e($site['release']) ?> by <?= e($site['name']) ?>"><?= e($site['presave']['label']) ?></a>

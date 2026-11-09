@@ -155,8 +155,8 @@ $artists = [
             'apple-music' => ['href' => 'https://music.apple.com/id/artist/nyamnyamcheese/1506193972', 'active' => true],
         ]),
         'extra_same_as' => [],
-        'feature_video' => ['id' => 'cafcaRNLJ0k', 'href' => 'https://youtu.be/cafcaRNLJ0k', 'title' => 'NYAM NYAM CHEESE — Sialan', 'poster' => '/images/nyamnyamcheese/video.jpg'],
-        'video' => ['id' => '', 'href' => '', 'title' => 'NYAM NYAM CHEESE on YouTube', 'poster' => '/images/nyamnyamcheese/video.jpg'],
+        'feature_video' => null, // no video in the release block for now; Sialan plays in the music section below
+        'video' => ['id' => 'cafcaRNLJ0k', 'href' => 'https://youtu.be/cafcaRNLJ0k', 'title' => 'NYAM NYAM CHEESE — Sialan', 'poster' => '/images/nyamnyamcheese/video.jpg'],
         // Figma 499:1990, ordered from center through the right side and back to the left.
         'photos' => [
             ['src' => '/images/nyamnyamcheese/photo-2.png', 'alt' => 'NYAM NYAM CHEESE posing in front of a stone wall'],
