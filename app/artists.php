@@ -158,7 +158,7 @@ $artists = [
         ]),
         'extra_same_as' => [],
         'feature_video' => null, // no video in the release block for now; Sialan plays in the music section below
-        'video' => ['id' => 'cafcaRNLJ0k', 'href' => 'https://youtu.be/cafcaRNLJ0k', 'title' => 'NYAM NYAM CHEESE — Sialan', 'poster' => '/images/nyamnyamcheese/video.jpg'],
+        'video' => ['id' => '55aHwmwNxTU', 'href' => 'https://youtu.be/55aHwmwNxTU', 'title' => 'NYAM NYAM CHEESE — Sialan', 'poster' => '', 'thumbnail_url' => 'https://i.ytimg.com/vi/55aHwmwNxTU/hqdefault.jpg'], // empty poster: card uses YouTube's own thumbnail,
         // Figma 499:1990, ordered from center through the right side and back to the left.
         'photos' => [
             ['src' => '/images/nyamnyamcheese/photo-2.png', 'alt' => 'NYAM NYAM CHEESE posing in front of a stone wall'],
