@@ -148,9 +148,12 @@ $artists = [
         'genre' => 'Deathcore',
         'artist_same_as' => ['https://open.spotify.com/artist/78sW6oL0hgb49sNTohmG6z', 'https://music.apple.com/id/artist/nyamnyamcheese/1506193972'],
         'keywords' => ['NYAM NYAM CHEESE', 'Sialan', 'Ples+', 'musik Indonesia', 'lagu baru'], 'tagline' => ['OUT NOW!!', 'Sialan'],
-        // Sialan is pre-save only (ONErpm). The cards below link to the artist profiles.
-        // Release date as written in Figma, plus the ISO form for <time datetime>.
-        'presave' => ['href' => 'https://onerpm.link/295056174471', 'label' => 'PRE - SAVE'],
+        // Sialan release links, shown in the OUT NOW section.
+        'feature_platforms' => $platforms([
+            'spotify' => ['href' => 'https://open.spotify.com/track/3g3O4KZjeCpVP3A96kGBBr', 'active' => true],
+            'apple-music' => ['href' => 'https://music.apple.com/id/album/sialan-single/6828340948', 'active' => true],
+        ]),
+        // Artist profiles.
         'platforms' => $platforms([
             'spotify' => ['href' => 'https://open.spotify.com/artist/78sW6oL0hgb49sNTohmG6z', 'active' => true],
             'apple-music' => ['href' => 'https://music.apple.com/id/artist/nyamnyamcheese/1506193972', 'active' => true],

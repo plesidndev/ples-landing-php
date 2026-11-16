@@ -14,12 +14,8 @@
                 <h2 id="nnc-release" class="nnc-release-title">OUT NOW!!<br><?= e($site['release']) ?></h2>
                 <?php if ($site['release_date'] ?? null): ?><time class="nnc-release-date" datetime="<?= e($site['release_date']['iso']) ?>"><?= e($site['release_date']['label']) ?></time><?php endif; ?>
                 <?php if ($site['feature_video']) render('components/video-card', ['video' => $site['feature_video'], 'className' => 'nnc-video']); ?>
-                <div class="nnc-presave">
-                    <?php if ($site['presave']['href'] !== ''): ?>
-                        <a href="<?= e($site['presave']['href']) ?>" target="_blank" rel="noopener noreferrer" data-dsp="presave" aria-label="Pre-save <?= e($site['release']) ?> by <?= e($site['name']) ?>"><?= e($site['presave']['label']) ?></a>
-                    <?php else: ?>
-                        <span role="link" aria-disabled="true" aria-label="Pre-save link coming soon"><?= e($site['presave']['label']) ?></span>
-                    <?php endif; ?>
+                <div class="nnc-links">
+                    <?php foreach ($site['feature_platforms'] as $platform) render('components/dsp-card', ['site' => $site, 'platform' => $platform, 'variant' => 'glass', 'logoHeight' => 27]); ?>
                 </div>
             </section>
 
