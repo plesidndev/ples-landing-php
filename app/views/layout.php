@@ -23,7 +23,8 @@ if ($isArtist && !$isError) {
     }
     $schema[] = $artistNode;
 
-    $schema[] = [
+    // A recording without a title is invalid structured data, so it waits for one.
+    if ($site['release'] !== '') $schema[] = [
         '@context' => 'https://schema.org', '@type' => 'MusicRecording',
         '@id' => $site['url'] . '#recording', 'name' => $site['release'], 'url' => $site['url'],
         'image' => absolute_url($site['og_image']), 'inLanguage' => 'id',

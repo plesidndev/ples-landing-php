@@ -42,6 +42,9 @@ callii/hero-swirl-bg.jpg
 callii/photo-collage.jpg
 callii/brngakas-hero.png
 maf/hero.png
+funfunforme/hero.jpg
+funfunforme/background.jpg
+funfunforme/wordmark.png
 "
 
 # Optional relative paths allow rebuilding only newly added artist assets.
