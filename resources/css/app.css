@@ -214,6 +214,13 @@ body { min-height: 100%; background: var(--background); color: var(--foreground)
   .obeiv-content > footer { margin-top: auto; }
 }
 
+@font-face {
+  font-family: "BBH Bartle";
+  src: url("/fonts/bbh-bartle-latin.woff2") format("woff2");
+  font-weight: 400;
+  font-display: swap;
+}
+
 /* Fun Fun For Me: Figma 556:1703. Desktop uses the shared sticky-portrait pattern. */
 .fff { background: #2b0f12; }
 .fff-background { position: absolute; inset: 0; pointer-events: none; }
@@ -224,8 +231,19 @@ body { min-height: 100%; background: var(--background); color: var(--foreground)
 .fff-hero picture { display: block; height: 100%; }
 .fff-hero img { width: 100%; height: 100%; object-fit: cover; }
 .fff-wordmark { position: relative; z-index: 1; height: 61px; margin-top: 9px; }
+.fff-wordmark::before { content: ""; position: absolute; inset: 0 3.6% 0 3.47%; border: 1px solid rgb(255 255 255 / .16); background: rgb(217 217 217 / .03); }
 .fff-wordmark img { position: absolute; left: 50%; top: -118px; width: 334px; max-width: calc(100% - 20px); height: auto; transform: translateX(-50%); }
 .fff-content { position: relative; min-width: 0; }
+/* Release section: Figma 570:1775. The blur sits on ::before so the pre-save pill can have its own. */
+.fff-release { position: relative; margin-top: 29px; padding: 13px 17px 10px; }
+.fff-release::before { content: ""; position: absolute; inset: 0; border: 1px solid rgb(255 255 255 / .2); background: rgb(217 217 217 / .2); -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px); }
+.fff-release > * { position: relative; }
+.fff-release-title { text-align: center; font-size: 24px; line-height: 30px; font-weight: 700; }
+.fff-release-date { display: block; margin: 12px 0 22px; text-align: center; font-family: "BBH Bartle", sans-serif; font-size: min(36px, 8.95vw); line-height: 36px; font-weight: 400; white-space: nowrap; text-shadow: 0 4px 4px rgb(0 0 0 / .25); }
+.fff-artwork img { display: block; width: 100%; height: auto; aspect-ratio: 1; }
+.fff-presave { display: flex; align-items: center; height: 56px; margin-top: 12px; padding: 0 19px 0 13px; border: 1px solid rgb(255 255 255 / .45); border-radius: 9999px; background: rgb(217 217 217 / .2); }
+.fff-presave > * { display: flex; flex: 1; align-items: center; justify-content: center; height: 31px; border-radius: 9999px; background: white; color: black; font-size: 12px; filter: drop-shadow(0 4px 2px rgb(0 0 0 / .25)); }
+.fff-presave a:hover { filter: drop-shadow(0 4px 2px rgb(0 0 0 / .25)) brightness(.95); }
 .fff-video { width: calc(100% - 50px); max-width: 384px; margin: 9px auto 0; }
 .fff-links { display: flex; flex-direction: column; gap: 12px; margin: 9px 18px 0; }
 .fff-links > div { border: 1px solid rgb(255 255 255 / .45); }
@@ -237,8 +255,10 @@ body { min-height: 100%; background: var(--background); color: var(--foreground)
   .fff-portrait { position: sticky; top: 0; height: 100vh; overflow: hidden; }
   .fff-hero { position: absolute; inset: 0; aspect-ratio: auto; }
   .fff-wordmark { position: absolute; left: 0; right: 0; bottom: 40px; height: auto; margin: 0; }
+  .fff-wordmark::before { content: none; }
   .fff-wordmark img { position: static; display: block; width: 70%; max-width: 520px; margin-inline: auto; transform: none; }
   .fff-content { display: flex; flex-direction: column; padding-top: 76px; }
-  .fff-music, .fff-gallery { width: 100%; max-width: 429px; margin-inline: auto; }
+  .fff-release, .fff-music, .fff-gallery { width: 100%; max-width: 429px; margin-inline: auto; }
+  .fff-release { margin-top: 0; }
   .fff-content > footer { margin-top: auto; }
 }

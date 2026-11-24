@@ -45,6 +45,7 @@ maf/hero.png
 funfunforme/hero.jpg
 funfunforme/background.jpg
 funfunforme/wordmark.png
+funfunforme/jelita-artwork.jpg
 "
 
 # Optional relative paths allow rebuilding only newly added artist assets.

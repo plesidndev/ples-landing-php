@@ -205,29 +205,34 @@ $artists = [
     ],
     'funfunforme' => $common + [
         'id' => 'funfunforme', 'indexable' => true, 'crawlable' => true, 'view' => 'artists/funfunforme',
-        // Release title not supplied yet; layout.php skips MusicRecording while it is empty.
-        'name' => 'Fun Fun For Me', 'release' => '', 'title' => 'Fun Fun For Me | Ples+',
-        'description' => 'Dengarkan musik terbaru dari Fun Fun For Me dan temukan video serta galeri fotonya di sini.',
+        'name' => 'Fun Fun For Me', 'release' => 'JELITA', 'title' => 'Fun Fun For Me — JELITA | Ples+',
+        'description' => 'Pre-save “JELITA” dari Fun Fun For Me dan temukan video serta musik lainnya di sini.',
         'default_url' => 'https://funfunforme.plesconnect.app', 'theme_color' => '#2b0f12',
         'og_image' => '/images/funfunforme/hero.jpg', 'og_size' => [1600, 1577],
         'og_image_alt' => 'Fun Fun For Me band portrait',
         'lcp_image_desktop' => '', 'lcp_image' => '/images/funfunforme/hero.jpg',
         'genre' => '', 'artist_same_as' => ['https://open.spotify.com/artist/48lcwuOQKmq3fe69smpTuI', 'https://music.apple.com/id/artist/fun-fun-for-me/1679395702'],
-        'keywords' => ['Fun Fun For Me', 'funfunforme', 'Ples+', 'musik Indonesia', 'lagu baru'], 'tagline' => [],
+        'keywords' => ['Fun Fun For Me', 'funfunforme', 'JELITA', 'Ples+', 'musik Indonesia', 'lagu baru'], 'tagline' => ['OUT NOW!!!', 'JELITA'],
+        // Release date as written in Figma (DD.MM.YY), plus the ISO form for <time datetime>.
+        'release_date' => ['label' => '11.12.26', 'iso' => '2026-12-11'],
+        // Pre-save link not supplied yet: the button stays visible but disabled while href is empty.
+        'presave' => ['href' => '', 'label' => 'Pre - Save'],
+        'artwork' => ['src' => '/images/funfunforme/jelita-artwork.jpg', 'alt' => 'JELITA cover artwork: illustrated woman with a tear on a red background'],
         // Artist profiles.
         'platforms' => $platforms([
             'spotify' => ['href' => 'https://open.spotify.com/artist/48lcwuOQKmq3fe69smpTuI', 'active' => true],
             'apple-music' => ['href' => 'https://music.apple.com/id/artist/fun-fun-for-me/1679395702', 'active' => true],
         ]),
-        'extra_same_as' => ['https://youtu.be/VYrm14MA-EU'],
-        'video' => ['id' => 'VYrm14MA-EU', 'href' => 'https://youtu.be/VYrm14MA-EU', 'title' => 'Fun Fun For Me', 'poster' => ''],
+        // The video below is a different song (Dewasa), so it does not belong in JELITA's sameAs.
+        'extra_same_as' => [],
+        'video' => ['id' => 'VYrm14MA-EU', 'href' => 'https://youtu.be/VYrm14MA-EU', 'title' => 'Fun Fun For Me — Dewasa', 'description' => 'Tonton video lirik Dewasa dari Fun Fun For Me.', 'poster' => ''],
         // Figma 556:1785, ordered from center through the right side and back to the left.
         'photos' => [
             ['src' => '/images/funfunforme/photo-2.png', 'alt' => 'Fun Fun For Me posing in front of a stone wall'],
             ['src' => '/images/funfunforme/photo-4.png', 'alt' => 'Fun Fun For Me drummer on stage', 'centerTransform' => 'matrix3d(1.354167,.177083,0,.00245949,0,1.3125,0,0,0,0,1,0,0,-22.5,0,1)'],
-            ['src' => '/images/funfunforme/photo-5.png', 'alt' => 'Fun Fun For Me live on stage', 'centerTransform' => 'matrix3d(1.356322,.178161,0,.00247446,0,1.310345,0,0,0,0,1,0,0,-22.344828,0,1)'],
-            ['src' => '/images/funfunforme/photo-3.png', 'alt' => 'Fun Fun For Me stage setup', 'centerTransform' => 'matrix3d(.737288,-.131356,0,-.00182486,0,.966102,0,0,0,0,1,0,0,2.440678,0,1)'],
-            ['src' => '/images/funfunforme/photo-1.png', 'alt' => 'Fun Fun For Me banner on stage', 'centerTransform' => 'matrix3d(.738462,-.130769,0,-.00181624,0,.969231,0,0,0,0,1,0,0,2.215385,0,1)'],
+            ['src' => '/images/funfunforme/photo-5.png', 'alt' => 'Fun Fun For Me member singing and playing guitar on stage', 'centerTransform' => 'matrix3d(1.356322,.178161,0,.00247446,0,1.310345,0,0,0,0,1,0,0,-22.344828,0,1)'],
+            ['src' => '/images/funfunforme/photo-3.png', 'alt' => 'Fun Fun For Me member singing and playing guitar on stage', 'centerTransform' => 'matrix3d(.737288,-.131356,0,-.00182486,0,.966102,0,0,0,0,1,0,0,2.440678,0,1)'],
+            ['src' => '/images/funfunforme/photo-1.png', 'alt' => 'Fun Fun For Me vocalist on stage in front of the band banner', 'centerTransform' => 'matrix3d(.738462,-.130769,0,-.00181624,0,.969231,0,0,0,0,1,0,0,2.215385,0,1)'],
         ],
     ],
     'kayl' => $common + [

@@ -1,7 +1,7 @@
 <main class="fff relative flex-1 overflow-clip">
     <div class="fff-background" aria-hidden="true"><?= responsive_img('/images/funfunforme/background.jpg', '', '(min-width: 768px) 100vw, 736px', ['decoding' => 'async']) ?></div>
     <?php render('components/artist-header', ['site' => $site, 'maxWidth' => 'max-w-[402px] md:max-w-none', 'leftClass' => 'h-[31px] w-[136px] object-contain object-left', 'rightClass' => 'h-[27px] w-[24px]']); ?>
-    <h1 class="sr-only"><?= e($site['name']) ?></h1>
+    <h1 class="sr-only"><?= e($site['name']) ?> — <?= e($site['release']) ?></h1>
 
     <div class="fff-layout relative">
         <section class="fff-portrait" aria-label="Fun Fun For Me portrait">
@@ -10,6 +10,19 @@
         </section>
 
         <div class="fff-content">
+            <section aria-labelledby="fff-release" class="fff-release">
+                <h2 id="fff-release" class="fff-release-title">OUT NOW!!!<br><?= e($site['release']) ?></h2>
+                <time class="fff-release-date" datetime="<?= e($site['release_date']['iso']) ?>"><?= e($site['release_date']['label']) ?></time>
+                <div class="fff-artwork"><?= responsive_img($site['artwork']['src'], $site['artwork']['alt'], '(min-width: 768px) 395px, 368px', ['width' => 1200, 'height' => 1200, 'loading' => 'lazy', 'decoding' => 'async']) ?></div>
+                <div class="fff-presave">
+                    <?php if ($site['presave']['href'] !== ''): ?>
+                        <a href="<?= e($site['presave']['href']) ?>" target="_blank" rel="noopener noreferrer" data-dsp="presave" aria-label="Pre-save <?= e($site['release']) ?> by <?= e($site['name']) ?>"><?= e($site['presave']['label']) ?></a>
+                    <?php else: ?>
+                        <span role="link" aria-disabled="true" aria-label="Pre-save link coming soon"><?= e($site['presave']['label']) ?></span>
+                    <?php endif; ?>
+                </div>
+            </section>
+
             <section aria-label="Listen to Fun Fun For Me" class="fff-music">
                 <?php render('components/video-card', ['video' => $site['video'], 'className' => 'fff-video']); ?>
                 <div class="fff-links">
