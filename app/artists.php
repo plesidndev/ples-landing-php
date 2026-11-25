@@ -215,8 +215,8 @@ $artists = [
         'keywords' => ['Fun Fun For Me', 'funfunforme', 'JELITA', 'Ples+', 'musik Indonesia', 'lagu baru'], 'tagline' => ['OUT NOW!!!', 'JELITA'],
         // Release date as written in Figma (DD.MM.YY), plus the ISO form for <time datetime>.
         'release_date' => ['label' => '11.12.26', 'iso' => '2026-12-11'],
-        // Pre-save link not supplied yet: the button stays visible but disabled while href is empty.
-        'presave' => ['href' => '', 'label' => 'Pre - Save'],
+        // ONErpm pre-save. An empty href keeps the button visible but disabled.
+        'presave' => ['href' => 'https://onerpm.link/206129336281', 'label' => 'Pre - Save'],
         'artwork' => ['src' => '/images/funfunforme/jelita-artwork.jpg', 'alt' => 'JELITA cover artwork: illustrated woman with a tear on a red background'],
         // Artist profiles.
         'platforms' => $platforms([
